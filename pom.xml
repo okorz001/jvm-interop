@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.korz.jvm-interop</groupId>
+  <artifactId>jvm-interop</artifactId>
+  <version>1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <properties>
+    <maven.deploy.skip>true</maven.deploy.skip>
+  </properties>
+
+  <modules>
+    <!-- parent POMs -->
+    <module>poms/interop-parent</module>
+    <module>poms/interop-app-parent</module>
+
+    <!-- libraries -->
+    <module>libs/interop-java-lib</module>
+    <module>libs/interop-groovy-lib</module>
+    <module>libs/interop-kotlin-lib</module>
+
+    <!-- applications -->
+    <module>apps/interop-java-app-java</module>
+    <module>apps/interop-java-app-groovy</module>
+    <module>apps/interop-java-app-kotlin</module>
+
+    <module>apps/interop-groovy-app-groovy</module>
+    <module>apps/interop-groovy-app-java</module>
+
+    <module>apps/interop-kotlin-app-kotlin</module>
+    <module>apps/interop-kotlin-app-java</module>
+  </modules>
+</project>

@@ -1,0 +1,4 @@
+moduleName=${project.groupId}:${project.artifactId}
+moduleVersion=${project.version}
+extensionClasses=interop.groovy.lib.GroovyExtensionMethods
+staticExtensionClasses=interop.groovy.lib.GroovyStaticExtensionMethods

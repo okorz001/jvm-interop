@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.korz.jvm-interop</groupId>
+    <artifactId>interop-parent</artifactId>
+    <version>1-SNAPSHOT</version>
+    <relativePath>../interop-parent</relativePath>
+  </parent>
+
+  <artifactId>interop-app-parent</artifactId>
+  <packaging>pom</packaging>
+
+  <properties>
+    <appName>${project.name}</appName>
+    <mainClassName>THIS MUST BE DEFINED IN EACH APPLICATION</mainClassName>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>interop-java-lib</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>interop-groovy-lib</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>interop-kotlin-lib</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <profiles>
+    <profile>
+      <id>application</id>
+      <!-- Try to only attach plugins in a "real" project by looking for src/main. -->
+      <activation>
+        <file>
+          <exists>src/main</exists>
+        </file>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-enforcer-plugin</artifactId>
+            <configuration>
+              <rules combine.self="append">
+                <!-- Ensure mainClassName is defined since we cannot trigger on it. -->
+                <requireProperty>
+                  <property>mainClassName</property>
+                  <regex>[\w.]+</regex>
+                  <regexMessage>Property "mainClassName" must define the application's main class.</regexMessage>
+                </requireProperty>
+              </rules>
+            </configuration>
+          </plugin>
+
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>appassembler-maven-plugin</artifactId>
+            <version>1.10</version>
+            <configuration>
+              <programs>
+                <program>
+                  <id>${appName}</id>
+                  <mainClass>${mainClassName}</mainClass>
+                </program>
+              </programs>
+              <repositoryName>lib</repositoryName>
+              <repositoryLayout>flat</repositoryLayout>
+            </configuration>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>assemble</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>exec-maven-plugin</artifactId>
+            <version>1.6.0</version>
+            <executions>
+              <!-- Run the example apps in verify. -->
+              <execution>
+                <id>run</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>exec</goal>
+                </goals>
+                <configuration>
+                  <executable>${project.build.directory}/appassembler/bin/${appName}</executable>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+</project>
