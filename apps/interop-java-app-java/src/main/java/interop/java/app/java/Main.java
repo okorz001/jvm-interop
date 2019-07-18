@@ -2,9 +2,28 @@ package interop.java.app.java;
 
 import interop.java.lib.JavaBaseClass;
 import interop.java.lib.JavaClass;
+import interop.java.lib.JavaConstructorAnnotation;
+import interop.java.lib.JavaFieldAnnotation;
+import interop.java.lib.JavaMethodAnnotation;
+import interop.java.lib.JavaParameterAnnotation;
+import interop.java.lib.JavaTypeAnnotation;
 
 public class Main {
     private static final String LANG = "Java";
+
+    @JavaTypeAnnotation(LANG)
+    public static class UseJavaAnnotations {
+        @JavaFieldAnnotation(LANG)
+        public int field;
+
+        @JavaConstructorAnnotation(LANG)
+        public UseJavaAnnotations() {}
+
+        @JavaMethodAnnotation(LANG)
+        public void method() {}
+
+        public void method(@JavaParameterAnnotation(LANG) int param) {}
+    }
 
     public static void main(String[] args) {
         JavaClass.staticField = LANG;
@@ -27,5 +46,10 @@ public class Main {
                 return LANG;
             }
         });
+        JavaClass.usedTypeAnnotation(new UseJavaAnnotations());
+        JavaClass.usedConstructorAnnotation(new UseJavaAnnotations());
+        JavaClass.usedMethodAnnotation(new UseJavaAnnotations());
+        JavaClass.usedFieldAnnotation(new UseJavaAnnotations());
+        JavaClass.usedParameterAnnotation(new UseJavaAnnotations());
     }
 }

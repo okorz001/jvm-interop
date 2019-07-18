@@ -2,8 +2,26 @@ package interop.kotlin.app.java
 
 import interop.java.lib.JavaBaseClass
 import interop.java.lib.JavaClass
+import interop.java.lib.JavaConstructorAnnotation
+import interop.java.lib.JavaFieldAnnotation
+import interop.java.lib.JavaMethodAnnotation
+import interop.java.lib.JavaParameterAnnotation
+import interop.java.lib.JavaTypeAnnotation
 
 private const val LANG = "Kotlin"
+
+@JavaTypeAnnotation(LANG)
+class UseJavaAnnotations @JavaConstructorAnnotation(LANG) constructor(
+    // Must use @JvmField to force a field instead of a property
+    @JavaFieldAnnotation(LANG)
+    @JvmField
+    var field: Int = 0
+) {
+    @JavaMethodAnnotation(LANG)
+    fun method() {}
+
+    fun method(@JavaParameterAnnotation(LANG) param: Int) {}
+}
 
 fun main() {
     JavaClass.staticField = LANG
@@ -25,4 +43,9 @@ fun main() {
             return LANG
         }
     })
+    JavaClass.usedTypeAnnotation(UseJavaAnnotations())
+    JavaClass.usedConstructorAnnotation(UseJavaAnnotations())
+    JavaClass.usedMethodAnnotation(UseJavaAnnotations())
+    JavaClass.usedFieldAnnotation(UseJavaAnnotations())
+    JavaClass.usedParameterAnnotation(UseJavaAnnotations())
 }
