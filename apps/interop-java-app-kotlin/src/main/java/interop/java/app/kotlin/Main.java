@@ -21,16 +21,23 @@ public class Main {
         System.out.printf("Using Kotlin @JvmStatic companion property in %s\n", KotlinClass.getStaticProperty());
         KotlinClass.staticField = LANG;
         System.out.printf("Using Kotlin companion field in %s\n", KotlinClass.staticField);
+        KotlinLibraryKt.setCompanionExtensionProperty(KotlinClass.Companion, LANG);
+        System.out.printf("Using Kotlin companion extension property in %s\n",
+                          KotlinLibraryKt.getCompanionExtensionProperty(KotlinClass.Companion));
         KotlinClass.Companion.companionMethod(LANG);
         KotlinClass.staticMethod(LANG);
+        KotlinLibraryKt.companionExtensionFunction(KotlinClass.Companion, LANG);
 
         KotlinClass instance = new KotlinClass();
         instance.setInstanceProperty(LANG);
         System.out.printf("Using Kotlin instance property in %s\n", instance.getInstanceProperty());
         instance.instanceField = LANG;
         System.out.printf("Using Kotlin instance field in %s\n", instance.instanceField);
+        KotlinLibraryKt.setInstanceExtensionProperty(instance, LANG);
+        System.out.printf("Using Kotlin instance extension property in %s\n",
+                          KotlinLibraryKt.getInstanceExtensionProperty(instance));
         instance.instanceMethod(LANG);
-        KotlinLibraryKt.extensionMethod(instance, LANG);
+        KotlinLibraryKt.instanceExtensionFunction(instance, LANG);
 
         KotlinObject.INSTANCE.setObjectProperty(LANG);
         System.out.printf("Using Kotlin object property in %s\n", KotlinObject.INSTANCE.getObjectProperty());
@@ -38,8 +45,12 @@ public class Main {
         System.out.printf("Using Kotlin @JvmStatic object property in %s\n", KotlinObject.getStaticProperty());
         KotlinObject.staticField = LANG;
         System.out.printf("Using Kotlin object field in %s\n", KotlinObject.staticField);
+        KotlinLibraryKt.setObjectExtensionProperty(KotlinObject.INSTANCE, LANG);
+        System.out.printf("Using Kotlin object extension property in %s\n",
+                          KotlinLibraryKt.getObjectExtensionProperty(KotlinObject.INSTANCE));
         KotlinObject.INSTANCE.objectMethod(LANG);
         KotlinObject.staticMethod(LANG);
+        KotlinLibraryKt.objectExtensionFunction(KotlinObject.INSTANCE, LANG);
 
         KotlinLibraryKt.implementedFunction(() -> LANG);
         KotlinLibraryKt.implementedFunctionWithReceiver(it -> LANG);
