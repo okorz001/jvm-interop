@@ -34,7 +34,7 @@ public class Main {
         System.out.printf("Using Groovy static field in %s\n", GroovyClass.staticField);
         GroovyClass.staticMethod(LANG);
         // If there are multiple static extensions with the same name, then you must cast null to pick one.
-        GroovyStaticExtensionMethods.extensionStaticMethod(null, LANG);
+        GroovyStaticExtensionMethods.staticExtensionMethod(null, LANG);
 
         GroovyClass instance = new GroovyClass();
         instance.setInstanceProperty(LANG);
@@ -42,7 +42,7 @@ public class Main {
         instance.instanceField = LANG;
         System.out.printf("Using Groovy instance field in %s\n", instance.instanceField);
         instance.instanceMethod(LANG);
-        GroovyExtensionMethods.extensionInstanceMethod(instance, LANG);
+        GroovyExtensionMethods.instanceExtensionMethod(instance, LANG);
 
         GroovyClass.implementedInterface(() -> LANG);
         GroovyClass.implementedTrait(() -> LANG);

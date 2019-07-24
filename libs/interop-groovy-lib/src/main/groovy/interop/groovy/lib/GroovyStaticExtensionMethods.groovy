@@ -1,7 +1,7 @@
 package interop.groovy.lib
 
 class GroovyStaticExtensionMethods {
-    static def extensionStaticMethod(GroovyClass self, String from) {
-        println "Calling Groovy extension static method from ${from}"
+    static def staticExtensionMethod(GroovyClass self, String from) {
+        println "Calling Groovy static extension method from ${from}"
     }
 }

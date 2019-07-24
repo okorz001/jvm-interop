@@ -32,7 +32,7 @@ println("Using Groovy static property in ${GroovyClass.staticProperty}")
 GroovyClass.staticField = LANG
 println("Using Groovy static field in ${GroovyClass.staticField}")
 GroovyClass.staticMethod(LANG)
-GroovyClass.extensionStaticMethod(LANG)
+GroovyClass.staticExtensionMethod(LANG)
 
 def instance = new GroovyClass()
 instance.instanceProperty = LANG
@@ -40,7 +40,7 @@ println("Using Groovy instance property in ${instance.instanceProperty}")
 instance.instanceField = LANG
 println("Using Groovy instance field in ${instance.instanceField}")
 instance.instanceMethod(LANG)
-instance.extensionInstanceMethod(LANG)
+instance.instanceExtensionMethod(LANG)
 
 GroovyClass.implementedInterface({ LANG })
 GroovyClass.implementedTrait({ LANG })

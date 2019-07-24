@@ -37,7 +37,7 @@ class KotlinClass {
 }
 
 fun KotlinClass.extensionMethod(from: String) {
-    println("Calling Kotlin extension function from $from")
+    println("Calling Kotlin extension method from $from")
 }
 
 fun implementedFunction(it: () -> String) {
