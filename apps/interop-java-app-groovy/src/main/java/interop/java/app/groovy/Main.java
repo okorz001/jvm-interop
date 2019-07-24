@@ -5,6 +5,7 @@ import interop.groovy.lib.GroovyClass;
 import interop.groovy.lib.GroovyConstructorAnnotation;
 import interop.groovy.lib.GroovyExtensionMethods;
 import interop.groovy.lib.GroovyFieldAnnotation;
+import interop.groovy.lib.GroovyLibrary;
 import interop.groovy.lib.GroovyMethodAnnotation;
 import interop.groovy.lib.GroovyParameterAnnotation;
 import interop.groovy.lib.GroovyStaticExtensionMethods;
@@ -44,18 +45,18 @@ public class Main {
         instance.instanceMethod(LANG);
         GroovyExtensionMethods.instanceExtensionMethod(instance, LANG);
 
-        GroovyClass.implementedInterface(() -> LANG);
-        GroovyClass.implementedTrait(() -> LANG);
-        GroovyClass.extendedBaseClass(new GroovyBaseClass() {
+        GroovyLibrary.implementedInterface(() -> LANG);
+        GroovyLibrary.implementedTrait(() -> LANG);
+        GroovyLibrary.extendedBaseClass(new GroovyBaseClass() {
             @Override
             public String getLanguage() {
                 return LANG;
             }
         });
-        GroovyClass.usedTypeAnnotation(new UseGroovyAnnotations());
-        GroovyClass.usedConstructorAnnotation(new UseGroovyAnnotations());
-        GroovyClass.usedMethodAnnotation(new UseGroovyAnnotations());
-        GroovyClass.usedFieldAnnotation(new UseGroovyAnnotations());
-        GroovyClass.usedParameterAnnotation(new UseGroovyAnnotations());
+        GroovyLibrary.usedTypeAnnotation(new UseGroovyAnnotations());
+        GroovyLibrary.usedConstructorAnnotation(new UseGroovyAnnotations());
+        GroovyLibrary.usedMethodAnnotation(new UseGroovyAnnotations());
+        GroovyLibrary.usedFieldAnnotation(new UseGroovyAnnotations());
+        GroovyLibrary.usedParameterAnnotation(new UseGroovyAnnotations());
     }
 }

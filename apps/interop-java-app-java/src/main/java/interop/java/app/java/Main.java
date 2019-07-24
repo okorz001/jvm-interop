@@ -4,6 +4,7 @@ import interop.java.lib.JavaBaseClass;
 import interop.java.lib.JavaClass;
 import interop.java.lib.JavaConstructorAnnotation;
 import interop.java.lib.JavaFieldAnnotation;
+import interop.java.lib.JavaLibrary;
 import interop.java.lib.JavaMethodAnnotation;
 import interop.java.lib.JavaParameterAnnotation;
 import interop.java.lib.JavaTypeAnnotation;
@@ -39,17 +40,17 @@ public class Main {
         System.out.printf("Using Java instance property in %s\n", instance.getInstanceProperty());
         instance.instanceMethod(LANG);
 
-        JavaClass.implementedInterface(() -> LANG);
-        JavaClass.extendedBaseClass(new JavaBaseClass() {
+        JavaLibrary.implementedInterface(() -> LANG);
+        JavaLibrary.extendedBaseClass(new JavaBaseClass() {
             @Override
             public String getLanguage() {
                 return LANG;
             }
         });
-        JavaClass.usedTypeAnnotation(new UseJavaAnnotations());
-        JavaClass.usedConstructorAnnotation(new UseJavaAnnotations());
-        JavaClass.usedMethodAnnotation(new UseJavaAnnotations());
-        JavaClass.usedFieldAnnotation(new UseJavaAnnotations());
-        JavaClass.usedParameterAnnotation(new UseJavaAnnotations());
+        JavaLibrary.usedTypeAnnotation(new UseJavaAnnotations());
+        JavaLibrary.usedConstructorAnnotation(new UseJavaAnnotations());
+        JavaLibrary.usedMethodAnnotation(new UseJavaAnnotations());
+        JavaLibrary.usedFieldAnnotation(new UseJavaAnnotations());
+        JavaLibrary.usedParameterAnnotation(new UseJavaAnnotations());
     }
 }

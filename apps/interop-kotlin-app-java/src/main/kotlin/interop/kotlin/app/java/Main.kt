@@ -4,6 +4,7 @@ import interop.java.lib.JavaBaseClass
 import interop.java.lib.JavaClass
 import interop.java.lib.JavaConstructorAnnotation
 import interop.java.lib.JavaFieldAnnotation
+import interop.java.lib.JavaLibrary
 import interop.java.lib.JavaMethodAnnotation
 import interop.java.lib.JavaParameterAnnotation
 import interop.java.lib.JavaTypeAnnotation
@@ -37,15 +38,15 @@ fun main() {
     println("Using Java instance property in ${instance.instanceProperty}")
     instance.instanceMethod(LANG)
 
-    JavaClass.implementedInterface { LANG }
-    JavaClass.extendedBaseClass(object: JavaBaseClass() {
+    JavaLibrary.implementedInterface { LANG }
+    JavaLibrary.extendedBaseClass(object : JavaBaseClass() {
         override fun getLanguage(): String {
             return LANG
         }
     })
-    JavaClass.usedTypeAnnotation(UseJavaAnnotations())
-    JavaClass.usedConstructorAnnotation(UseJavaAnnotations())
-    JavaClass.usedMethodAnnotation(UseJavaAnnotations())
-    JavaClass.usedFieldAnnotation(UseJavaAnnotations())
-    JavaClass.usedParameterAnnotation(UseJavaAnnotations())
+    JavaLibrary.usedTypeAnnotation(UseJavaAnnotations())
+    JavaLibrary.usedConstructorAnnotation(UseJavaAnnotations())
+    JavaLibrary.usedMethodAnnotation(UseJavaAnnotations())
+    JavaLibrary.usedFieldAnnotation(UseJavaAnnotations())
+    JavaLibrary.usedParameterAnnotation(UseJavaAnnotations())
 }

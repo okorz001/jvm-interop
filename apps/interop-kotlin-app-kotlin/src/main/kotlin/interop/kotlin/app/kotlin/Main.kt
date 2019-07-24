@@ -19,6 +19,7 @@ fun main() {
     packageProperty = LANG
     println("Using Kotlin package property in $packageProperty")
     packageFunction(LANG)
+
     KotlinClass.companionProperty = LANG
     println("Using Kotlin companion property in ${KotlinClass.companionProperty}")
     KotlinClass.staticProperty = LANG
