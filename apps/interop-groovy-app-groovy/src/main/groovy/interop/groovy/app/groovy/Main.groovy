@@ -1,5 +1,6 @@
 package interop.groovy.app.groovy
 
+import groovy.transform.CompileDynamic
 import interop.groovy.lib.GroovyClass
 import interop.groovy.lib.GroovyConstructorAnnotation
 import interop.groovy.lib.GroovyFieldAnnotation
@@ -43,9 +44,11 @@ println("Using Groovy instance field in ${instance.instanceField}")
 instance.instanceMethod(LANG)
 instance.instanceExtensionMethod(LANG)
 
-GroovyLibrary.implementedInterface({ LANG })
-GroovyLibrary.implementedTrait({ LANG })
-GroovyLibrary.extendedBaseClass({ LANG })
+GroovyLibrary.implementedClosure { LANG }
+GroovyLibrary.implementedClosureWithDelegate { message.call(LANG) }
+GroovyLibrary.implementedInterface { LANG }
+GroovyLibrary.implementedTrait { LANG }
+GroovyLibrary.extendedBaseClass { LANG }
 GroovyLibrary.usedTypeAnnotation(new UseGroovyAnnotations())
 GroovyLibrary.usedConstructorAnnotation(new UseGroovyAnnotations())
 GroovyLibrary.usedMethodAnnotation(new UseGroovyAnnotations())

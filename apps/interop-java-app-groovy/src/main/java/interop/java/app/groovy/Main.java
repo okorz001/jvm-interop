@@ -1,5 +1,6 @@
 package interop.java.app.groovy;
 
+import groovy.lang.Closure;
 import interop.groovy.lib.GroovyBaseClass;
 import interop.groovy.lib.GroovyClass;
 import interop.groovy.lib.GroovyConstructorAnnotation;
@@ -45,6 +46,20 @@ public class Main {
         instance.instanceMethod(LANG);
         GroovyExtensionMethods.instanceExtensionMethod(instance, LANG);
 
+        // Use null for owner since we have no instance in a static method.
+        GroovyLibrary.implementedClosure(new Closure<String>(null){
+            @SuppressWarnings("unused") // called by reflection
+            public String doCall() {
+                return LANG;
+            }
+        });
+        GroovyLibrary.implementedClosureWithDelegate(new Closure<Void>(null){
+            @SuppressWarnings("unused") // called by reflection
+            public void doCall() {
+                Closure message = (Closure) getProperty("message");
+                message.call(LANG);
+            }
+        });
         GroovyLibrary.implementedInterface(() -> LANG);
         GroovyLibrary.implementedTrait(() -> LANG);
         GroovyLibrary.extendedBaseClass(new GroovyBaseClass() {

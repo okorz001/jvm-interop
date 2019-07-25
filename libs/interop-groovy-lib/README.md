@@ -20,7 +20,8 @@ Directly Callable API:
 
 Extensible API:
 
-* _Closures_
+* Closures
+* Closures with delegates
 * Interfaces
 * Traits
 * Base classes

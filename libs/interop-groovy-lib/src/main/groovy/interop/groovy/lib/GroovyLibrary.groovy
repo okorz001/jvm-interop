@@ -8,6 +8,23 @@ import groovy.transform.CompileStatic
 @CompileStatic
 class GroovyLibrary {
 
+    static implementedClosure(Closure<String> c) {
+        println "Implemented Groovy closure in ${c()}"
+    }
+
+    static class MyDelegate {
+        def message = {
+            println "Implemented Groovy closure with delegate in ${it}"
+        }
+    }
+
+    static implementedClosureWithDelegate(@DelegatesTo(MyDelegate) Closure<?> c) {
+        c = (Closure) c.clone()
+        c.resolveStrategy = Closure.DELEGATE_ONLY
+        c.delegate = new MyDelegate()
+        c()
+    }
+
     static implementedInterface(GroovyInterface it) {
         println "Implemented Groovy interface in ${it.getLanguage()}"
     }
