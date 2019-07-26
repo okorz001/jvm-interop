@@ -1,6 +1,7 @@
 package interop.java.app.groovy;
 
 import groovy.lang.Closure;
+import groovy.lang.GroovyObject;
 import interop.groovy.lib.GroovyBaseClass;
 import interop.groovy.lib.GroovyClass;
 import interop.groovy.lib.GroovyConstructorAnnotation;
@@ -11,6 +12,7 @@ import interop.groovy.lib.GroovyMethodAnnotation;
 import interop.groovy.lib.GroovyParameterAnnotation;
 import interop.groovy.lib.GroovyStaticExtensionMethods;
 import interop.groovy.lib.GroovyTypeAnnotation;
+import org.codehaus.groovy.runtime.DefaultGroovyMethods;
 
 public class Main {
     private static final String LANG = "Java";
@@ -29,22 +31,47 @@ public class Main {
         public void method(@GroovyParameterAnnotation(LANG) int param) {}
     }
 
+    // dumb workaround for GroovyObject methods being synthetic in 2.5.x
+    // https://issues.apache.org/jira/browse/GROOVY-8497
+    private static GroovyObject asPOGO(GroovyObject it) {
+        return it;
+    }
+
     public static void main(String[] args) {
         GroovyClass.setStaticProperty(LANG);
         System.out.printf("Using Groovy static property in %s\n", GroovyClass.getStaticProperty());
         GroovyClass.staticField = LANG;
         System.out.printf("Using Groovy static field in %s\n", GroovyClass.staticField);
+        // Dynamic properties are accessed through the MetaClass.
+        // Since Class is a Java object, it does not have getMetaClass.
+        DefaultGroovyMethods.getMetaClass(GroovyClass.class)
+            .setProperty(GroovyClass.class, "staticDynamicProperty", LANG);
+        System.out.printf("Using Groovy static dynamic property in %s\n",
+                          DefaultGroovyMethods.getMetaClass(GroovyClass.class)
+                              .getProperty(GroovyClass.class, "staticDynamicProperty"));
         GroovyClass.staticMethod(LANG);
         // If there are multiple static extensions with the same name, then you must cast null to pick one.
         GroovyStaticExtensionMethods.staticExtensionMethod(null, LANG);
+        // Dynamic methods are accessed through the MetaClass.
+        // Since Class is a Java object, it does not have getMetaClass.
+        DefaultGroovyMethods.getMetaClass(GroovyClass.class)
+            .invokeStaticMethod(GroovyClass.class, "staticDynamicMethod", new Object[]{LANG});
 
         GroovyClass instance = new GroovyClass();
         instance.setInstanceProperty(LANG);
         System.out.printf("Using Groovy instance property in %s\n", instance.getInstanceProperty());
         instance.instanceField = LANG;
         System.out.printf("Using Groovy instance field in %s\n", instance.instanceField);
+        // Dynamic properties are accessed through the MetaClass.
+        // GroovyObject's getProperty and setProperty handles this for us.
+        asPOGO(instance).setProperty("instanceDynamicProperty", LANG);
+        System.out.printf("Using Groovy instance dynamic property in %s\n",
+                          asPOGO(instance).getProperty("instanceDynamicProperty"));
         instance.instanceMethod(LANG);
         GroovyExtensionMethods.instanceExtensionMethod(instance, LANG);
+        // Dynamic methods are accessed through the MetaClass.
+        // GroovyObject's invokeMethod handles this for us.
+        asPOGO(instance).invokeMethod("staticDynamicMethod", new Object[]{LANG});
 
         // Use null for owner since we have no instance in a static method.
         GroovyLibrary.implementedClosure(new Closure<String>(null){
