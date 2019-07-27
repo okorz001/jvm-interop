@@ -32,5 +32,7 @@
 
     <module>apps/interop-kotlin-app-kotlin</module>
     <module>apps/interop-kotlin-app-java</module>
+
+    <module>apps/interop-scala-app-java</module>
   </modules>
 </project>

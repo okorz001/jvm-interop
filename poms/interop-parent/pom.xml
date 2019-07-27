@@ -127,5 +127,42 @@
         </plugins>
       </build>
     </profile>
+
+    <profile>
+      <id>scala</id>
+      <activation>
+        <file>
+          <exists>src/main/scala</exists>
+        </file>
+      </activation>
+      <dependencies>
+        <dependency>
+          <groupId>org.scala-lang</groupId>
+          <artifactId>scala-library</artifactId>
+          <version>2.13.0</version>
+        </dependency>
+      </dependencies>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>net.alchim31.maven</groupId>
+            <artifactId>scala-maven-plugin</artifactId>
+            <version>4.1.1</version>
+            <configuration>
+              <notifyCompilation>false</notifyCompilation>
+              <recompileMode>all</recompileMode>
+            </configuration>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>add-source</goal>
+                  <goal>compile</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
   </profiles>
 </project>
