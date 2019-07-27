@@ -21,11 +21,13 @@
     <module>libs/interop-java-lib</module>
     <module>libs/interop-groovy-lib</module>
     <module>libs/interop-kotlin-lib</module>
+    <module>libs/interop-scala-lib</module>
 
     <!-- applications -->
     <module>apps/interop-java-app-java</module>
     <module>apps/interop-java-app-groovy</module>
     <module>apps/interop-java-app-kotlin</module>
+    <module>apps/interop-java-app-scala</module>
 
     <module>apps/interop-groovy-app-groovy</module>
     <module>apps/interop-groovy-app-java</module>
@@ -33,6 +35,7 @@
     <module>apps/interop-kotlin-app-kotlin</module>
     <module>apps/interop-kotlin-app-java</module>
 
+    <module>apps/interop-scala-app-scala</module>
     <module>apps/interop-scala-app-java</module>
   </modules>
 </project>
