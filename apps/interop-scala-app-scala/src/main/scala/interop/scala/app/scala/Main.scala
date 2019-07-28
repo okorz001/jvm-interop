@@ -1,6 +1,6 @@
 package interop.scala.app.scala
 
-import interop.scala.lib.{packageMethod, packageProperty, ScalaClass, ScalaObject}
+import interop.scala.lib.{ScalaBaseClass, ScalaClass, ScalaLibrary, ScalaObject, ScalaTrait, ScalaTraitWithProperty, packageMethod, packageProperty}
 
 object Main extends App {
   // The final is required here to make a constant expression. (???)
@@ -22,4 +22,14 @@ object Main extends App {
   ScalaObject.objectProperty = LANG
   println(s"Using Scala object property in ${ScalaObject.objectProperty}")
   ScalaObject.objectMethod(LANG)
+
+  ScalaLibrary.implementedTrait(new ScalaTrait {
+    override def language: String = LANG
+  })
+  ScalaLibrary.implementedTraitWithProperty(LANG, new ScalaTraitWithProperty {
+    override var language: String = ""
+  })
+  ScalaLibrary.extendedBaseClass(new ScalaBaseClass {
+    override def language: String = LANG
+  })
 }

@@ -148,10 +148,6 @@
             <groupId>net.alchim31.maven</groupId>
             <artifactId>scala-maven-plugin</artifactId>
             <version>4.1.1</version>
-            <configuration>
-              <notifyCompilation>false</notifyCompilation>
-              <recompileMode>all</recompileMode>
-            </configuration>
             <executions>
               <execution>
                 <goals>

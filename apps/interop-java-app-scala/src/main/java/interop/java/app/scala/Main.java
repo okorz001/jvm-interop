@@ -1,5 +1,8 @@
 package interop.java.app.scala;
 
+import interop.scala.lib.ScalaBaseClass;
+import interop.scala.lib.ScalaLibrary;
+import interop.scala.lib.ScalaTraitWithProperty;
 import interop.scala.lib.package$;
 import interop.scala.lib.ScalaClass;
 import interop.scala.lib.ScalaObject;
@@ -29,5 +32,26 @@ public class Main {
         ScalaObject.objectProperty_$eq(LANG);
         System.out.printf("Using Scala object property in %s\n", ScalaObject.objectProperty());
         ScalaObject.objectMethod(LANG);
+
+        ScalaLibrary.implementedTrait(() -> LANG);
+        ScalaLibrary.implementedTraitWithProperty(LANG, new ScalaTraitWithProperty() {
+            private String language;
+
+            @Override
+            public String language() {
+                return language;
+            }
+
+            @Override
+            public void language_$eq(String language) {
+                this.language = language;
+            }
+        });
+        ScalaLibrary.extendedBaseClass(new ScalaBaseClass() {
+            @Override
+            public String language() {
+                return LANG;
+            }
+        });
     }
 }

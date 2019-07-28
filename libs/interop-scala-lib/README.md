@@ -21,6 +21,6 @@ Directly Callable API:
 
 Extensible API:
 
-* _Interfaces_
-* _Traits_
-* _Base classes_
+* Traits
+* Traits with properties
+* Base classes
