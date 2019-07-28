@@ -12,6 +12,7 @@ import interop.kotlin.lib.KotlinInterface
 import interop.kotlin.lib.KotlinObject
 import interop.kotlin.lib.companionExtensionFunction
 import interop.kotlin.lib.companionExtensionProperty
+import interop.kotlin.lib.implementedCurriedFunction
 import interop.kotlin.lib.instanceExtensionProperty
 import interop.kotlin.lib.objectExtensionFunction
 import interop.kotlin.lib.objectExtensionProperty
@@ -61,6 +62,7 @@ fun main() {
 
     implementedFunction { LANG }
     implementedFunctionWithReceiver { LANG }
+    implementedCurriedFunction { { LANG } }
     implementedInterface(object : KotlinInterface {
         override fun getLanguage(): String {
             return LANG

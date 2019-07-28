@@ -45,6 +45,10 @@ fun implementedFunctionWithReceiver(it: KotlinClass.() -> String) {
     println("Implemented Kotlin function with receiver in ${it(KotlinClass())}")
 }
 
+fun implementedCurriedFunction(it: () -> () -> String) {
+    println("Implemented Kotlin curried function in ${it()()}")
+}
+
 fun implementedInterface(it: KotlinInterface) {
     println("Implemented Kotlin interface in ${it.getLanguage()}")
 }

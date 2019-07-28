@@ -18,9 +18,12 @@ Directly Callable API:
 * Object properties
 * Object methods
 * _Case classes_
+* Methods with multiple parameters lists
 
 Extensible API:
 
+* Functions
+* Curried functions
 * Traits
 * Traits with properties
 * Base classes

@@ -23,6 +23,10 @@ object Main extends App {
   println(s"Using Scala object property in ${ScalaObject.objectProperty}")
   ScalaObject.objectMethod(LANG)
 
+  ScalaLibrary.methodWithMultipleParameterLists(LANG)(1)
+
+  ScalaLibrary.implementedFunction(() => LANG)
+  ScalaLibrary.implementedCurriedFunction(() => () => LANG)
   ScalaLibrary.implementedTrait(new ScalaTrait {
     override def language: String = LANG
   })

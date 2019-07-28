@@ -36,6 +36,7 @@ Extensible API:
 
 * Functions
 * Functions with receivers
+* Curried functions
 * Interfaces
 * Base classes
 * _Annotations_

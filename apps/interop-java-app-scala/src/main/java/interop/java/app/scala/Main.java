@@ -33,6 +33,11 @@ public class Main {
         System.out.printf("Using Scala object property in %s\n", ScalaObject.objectProperty());
         ScalaObject.objectMethod(LANG);
 
+        // Parameter lists are flattened together.
+        ScalaLibrary.methodWithMultipleParameterLists(LANG, 1);
+
+        ScalaLibrary.implementedFunction(() -> LANG);
+        ScalaLibrary.implementedCurriedFunction(() -> () -> LANG);
         ScalaLibrary.implementedTrait(() -> LANG);
         ScalaLibrary.implementedTraitWithProperty(LANG, new ScalaTraitWithProperty() {
             private String language;

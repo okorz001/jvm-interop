@@ -54,6 +54,7 @@ public class Main {
 
         KotlinLibraryKt.implementedFunction(() -> LANG);
         KotlinLibraryKt.implementedFunctionWithReceiver(it -> LANG);
+        KotlinLibraryKt.implementedCurriedFunction(() -> () -> LANG);
         KotlinLibraryKt.implementedInterface(() -> LANG);
         KotlinLibraryKt.extendedBaseClass(new KotlinBaseClass() {
             @NotNull
