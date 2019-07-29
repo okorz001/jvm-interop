@@ -22,15 +22,11 @@ object Main extends App {
 
   JavaClass.staticField = LANG
   println(s"Using Java static field in ${JavaClass.staticField}")
-  JavaClass.setStaticProperty(LANG)
-  println(s"Using Java static property in ${JavaClass.getStaticProperty}")
   JavaClass.staticMethod(LANG)
 
   val instance = new JavaClass
   instance.instanceField = LANG
   println(s"Using Java instance field in ${instance.instanceField}")
-  instance.setInstanceProperty(LANG)
-  println(s"Using Java instance property in ${instance.getInstanceProperty}")
   instance.instanceMethod(LANG)
 
   JavaLibrary.implementedInterface(() => LANG)

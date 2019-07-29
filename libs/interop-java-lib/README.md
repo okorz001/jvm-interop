@@ -9,11 +9,9 @@ _Italics_ is not implemented yet.
 Directly Callable API:
 
 * Static fields
-* Static properties (convention, not a feature)
 * Static methods
 * Constructors
 * Instance fields
-* Instance properties (convention, not a feature)
 * Instance methods
 
 Extensible API:
