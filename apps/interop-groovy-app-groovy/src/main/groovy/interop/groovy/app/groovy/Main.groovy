@@ -49,6 +49,21 @@ instance.instanceMethod(LANG)
 instance.instanceExtensionMethod(LANG)
 instance.instanceDynamicMethod(LANG)
 
+GroovyLibrary.defaultArguments(LANG, 1, 2)
+GroovyLibrary.defaultArguments(LANG, 1)
+GroovyLibrary.defaultArguments(LANG)
+
+GroovyLibrary.namedParameters(LANG, a: 1, b: 2)
+// named parameters can be in any order after positional arguments
+GroovyLibrary.namedParameters(LANG, b: 2, a: 1)
+// named parameters can be omitted
+GroovyLibrary.namedParameters(LANG, a: 1)
+GroovyLibrary.namedParameters(LANG, b: 2)
+// if all named parameters are omitted, an empty map must be explicitly passed
+GroovyLibrary.namedParameters([:], LANG)
+// alternatively, an overload can be provided without the first map parameter
+GroovyLibrary.namedParameters(LANG)
+
 GroovyLibrary.implementedClosure { LANG }
 GroovyLibrary.implementedClosureWithDelegate { message.call(LANG) }
 GroovyLibrary.implementedInterface { LANG }

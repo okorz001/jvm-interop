@@ -1,5 +1,7 @@
 package interop.java.app.groovy;
 
+import java.util.Collections;
+
 import groovy.lang.Closure;
 import groovy.lang.GroovyObject;
 import interop.groovy.lib.GroovyBaseClass;
@@ -72,6 +74,18 @@ public class Main {
         // Dynamic methods are accessed through the MetaClass.
         // GroovyObject's invokeMethod handles this for us.
         asPOGO(instance).invokeMethod("staticDynamicMethod", new Object[]{LANG});
+
+        // Default arguments are implemented as overloads.
+        GroovyLibrary.defaultArguments(LANG, 1, 2);
+        GroovyLibrary.defaultArguments(LANG, 1);
+        GroovyLibrary.defaultArguments(LANG);
+
+        // Named parameters are passed as a map in the first position (just like in the method declaration).
+        // [a: 1, b: 2] is an exercise for the reader (too verbose in Java!)
+        GroovyLibrary.namedParameters(Collections.singletonMap("a", 1), LANG);
+        GroovyLibrary.namedParameters(Collections.singletonMap("b", 2), LANG);
+        GroovyLibrary.namedParameters(Collections.emptyMap(), LANG);
+        GroovyLibrary.namedParameters(LANG);
 
         // Use null for owner since we have no instance in a static method.
         GroovyLibrary.implementedClosure(new Closure<String>(null){

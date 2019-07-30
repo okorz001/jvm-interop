@@ -8,6 +8,22 @@ import groovy.transform.CompileStatic
 @CompileStatic
 class GroovyLibrary {
 
+    static defaultArguments(String from, a = "default", b = "default") {
+        println("Called Groovy method with default arguments from ${from} with a=${a} b=${b}")
+    }
+
+    static namedParameters(Map args, String from) {
+        def a = args.a ?: "default"
+        def b = args.b ?: "default"
+        println("Called Groovy method with named parameters from ${from} with a=${a} b=${b}")
+    }
+
+    // convenience overload instead of namedParameters([:], from)
+    static namedParameters(String from) {
+        // different println to clarify what is being called
+        println("Called Groovy method with named parameters from ${from} with no named parameters")
+    }
+
     static implementedClosure(Closure<String> c) {
         println "Implemented Groovy closure in ${c()}"
     }
