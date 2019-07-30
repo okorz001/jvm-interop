@@ -1,8 +1,12 @@
 package interop.scala.lib
 
 object ScalaLibrary {
-  def methodWithMultipleParameterLists(from: String)(arg: Any): Unit = {
+  def multipleParameterLists(from: String)(arg: Any): Unit = {
     println(s"Called Scala method with multiple parameter lists from $from with $arg")
+  }
+
+  def defaultArguments(from: String, a: Any = "default", b: Any = "default"): Unit = {
+    println(s"Called Scala method with default arguments from $from with a=$a and b=$b")
   }
 
   def implementedFunction(it: () => String): Unit = {

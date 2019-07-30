@@ -34,7 +34,11 @@ public class Main {
         ScalaObject.objectMethod(LANG);
 
         // Parameter lists are flattened together.
-        ScalaLibrary.methodWithMultipleParameterLists(LANG, 1);
+        ScalaLibrary.multipleParameterLists(LANG, 1);
+
+        // Scala does not generate overloads for default arguments.
+        // Java callers must know the default values. Adding new default arguments is a breaking change for Java.
+        ScalaLibrary.defaultArguments(LANG, 1, 2);
 
         ScalaLibrary.implementedFunction(() -> LANG);
         ScalaLibrary.implementedCurriedFunction(() -> () -> LANG);

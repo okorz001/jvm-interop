@@ -23,7 +23,15 @@ object Main extends App {
   println(s"Using Scala object property in ${ScalaObject.objectProperty}")
   ScalaObject.objectMethod(LANG)
 
-  ScalaLibrary.methodWithMultipleParameterLists(LANG)(1)
+  ScalaLibrary.multipleParameterLists(LANG)(1)
+
+  ScalaLibrary.defaultArguments(LANG, 1, 2)
+  ScalaLibrary.defaultArguments(LANG, 1)
+  ScalaLibrary.defaultArguments(LANG)
+  // named arguments allow skipping positional arguments with defaults
+  ScalaLibrary.defaultArguments(LANG, b = 2)
+  // named arguments can be in any order
+  ScalaLibrary.defaultArguments(LANG, b = 2, a = 1)
 
   ScalaLibrary.implementedFunction(() => LANG)
   ScalaLibrary.implementedCurriedFunction(() => () => LANG)

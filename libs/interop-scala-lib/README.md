@@ -18,7 +18,8 @@ Directly Callable API:
 * Object properties
 * Object methods
 * _Case classes_
-* Methods with multiple parameters lists
+* Multiple parameters lists
+* Default arguments
 
 Extensible API:
 
