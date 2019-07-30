@@ -40,6 +40,7 @@ This repository currently covers:
 * Java
 * Groovy
 * Kotlin
+* Scala
 
 ## Build
 
