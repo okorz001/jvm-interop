@@ -12,6 +12,7 @@ import interop.kotlin.lib.KotlinInterface
 import interop.kotlin.lib.KotlinObject
 import interop.kotlin.lib.companionExtensionFunction
 import interop.kotlin.lib.companionExtensionProperty
+import interop.kotlin.lib.defaultArguments
 import interop.kotlin.lib.implementedCurriedFunction
 import interop.kotlin.lib.instanceExtensionProperty
 import interop.kotlin.lib.objectExtensionFunction
@@ -59,6 +60,14 @@ fun main() {
     KotlinObject.objectMethod(LANG)
     KotlinObject.staticMethod(LANG)
     KotlinObject.objectExtensionFunction(LANG)
+
+    defaultArguments(LANG, 1, 2)
+    defaultArguments(LANG, 1)
+    defaultArguments(LANG)
+    // named arguments allow skipping positional arguments with defaults
+    defaultArguments(LANG, b = 2)
+    // named arguments can be in any order
+    defaultArguments(LANG, b = 2, a = 1)
 
     implementedFunction { LANG }
     implementedFunctionWithReceiver { LANG }

@@ -31,6 +31,7 @@ Directly Callable API:
 * Object extension functions
 * _Data classes_
 * _Sealed classes_
+* Default arguments
 
 Extensible API:
 

@@ -37,6 +37,10 @@ fun KotlinObject.objectExtensionFunction(from: String) {
     println("Calling Kotlin object extension function from $from")
 }
 
+fun defaultArguments(from: String, a: Any = "default", b: Any = "default") {
+    println("Called Kotlin function with default arguments from $from with a=$a and b=$b")
+}
+
 fun implementedFunction(it: () -> String) {
     println("Implemented Kotlin function in ${it()}")
 }
