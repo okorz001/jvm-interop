@@ -37,10 +37,20 @@ demonstrated, since these are relevant for interop.
 ## Languages
 
 This repository currently covers:
-* Java
-* Groovy
-* Kotlin
-* Scala
+* [Java](libs/interop-java-lib)
+  * calling [Java](apps/interop-java-app-java)
+  * calling [Groovy](apps/interop-java-app-groovy)
+  * calling [Kotlin](apps/interop-java-app-kotlin)
+  * calling [Scala](apps/interop-java-app-scala)
+* [Groovy](libs/interop-groovy-lib)
+  * calling [Groovy](apps/interop-groovy-app-groovy)
+  * calling [Java](apps/interop-groovy-app-java)
+* [Kotlin](libs/interop-kotlin-lib)
+  * calling [Kotlin](apps/interop-kotlin-app-kotlin)
+  * calling [Java](apps/interop-kotlin-app-java)
+* [Scala](libs/interop-scala-lib)
+  * calling [Scala](apps/interop-scala-app-scala)
+  * calling [Java](apps/interop-scala-app-java)
 
 ## Build
 
