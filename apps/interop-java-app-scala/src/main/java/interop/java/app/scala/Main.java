@@ -26,21 +26,85 @@ public class Main {
         // As a workaround, we can access the package object instance in interop.scala.lib.package$.MODULES$
         package$.MODULE$.packageProperty_$eq(LANG);
         System.out.printf("Using Scala package property in %s\n", package$.MODULE$.packageProperty());
+        // @BeanProperty generates conventional getter/setter.
+        package$.MODULE$.setPackageBeanProperty(LANG);
+        System.out.printf("Using Scala @BeanProperty package property in %s\n",
+                          package$.MODULE$.getPackageBeanProperty());
+        // Regular Scala getter/setter are still available
+        package$.MODULE$.packageBeanProperty_$eq(LANG);
+        System.out.printf("Using Scala @BeanProperty package property in %s\n",
+                          package$.MODULE$.packageBeanProperty());
+        // @BooleanBeanProperty generates conventional getter/setter for booleans.
+        package$.MODULE$.setPackageBooleanBeanProperty(true);
+        System.out.printf("Using Scala @BooleanBeanProperty package property in Java: %b\n",
+                          package$.MODULE$.isPackageBooleanBeanProperty());
+        // Regular Scala getter/setter are still available
+        package$.MODULE$.packageBooleanBeanProperty_$eq(true);
+        System.out.printf("Using Scala @BooleanBeanProperty package property in Java: %b\n",
+                          package$.MODULE$.packageBooleanBeanProperty());
         package$.MODULE$.packageMethod(LANG);
 
         // The ScalaClass companion object instance is available in interop.scala.lib.ScalaClass$.MODULES$
         ScalaClass.companionProperty_$eq(LANG);
         System.out.printf("Using Scala companion property in %s\n", ScalaClass.companionProperty());
+        // @BeanProperty generates conventional getter/setter.
+        ScalaClass.setCompanionBeanProperty(LANG);
+        System.out.printf("Using Scala @BeanProperty companion property in %s\n",
+                          ScalaClass.getCompanionBeanProperty());
+        // Regular Scala getter/setter are still available
+        ScalaClass.companionBeanProperty_$eq(LANG);
+        System.out.printf("Using Scala @BeanProperty companion property in %s\n",
+                          ScalaClass.companionBeanProperty());
+        // @BooleanBeanProperty generates conventional getter/setter for booleans.
+        ScalaClass.setCompanionBooleanBeanProperty(true);
+        System.out.printf("Using Scala @BooleanBeanProperty companion property in Java: %b\n",
+                          ScalaClass.isCompanionBooleanBeanProperty());
+        // Regular Scala getter/setter are still available
+        ScalaClass.companionBooleanBeanProperty_$eq(true);
+        System.out.printf("Using Scala @BooleanBeanProperty companion property in Java: %b\n",
+                          ScalaClass.companionBooleanBeanProperty());
         ScalaClass.companionMethod(LANG);
 
         ScalaClass instance = new ScalaClass();
         instance.instanceProperty_$eq(LANG);
         System.out.printf("Using Scala instance property in %s\n", instance.instanceProperty());
+        // @BeanProperty generates conventional getter/setter.
+        instance.setInstanceBeanProperty(LANG);
+        System.out.printf("Using Scala @BeanProperty instance property in %s\n",
+                          instance.getInstanceBeanProperty());
+        // Regular Scala getter/setter are still available
+        instance.instanceProperty_$eq(LANG);
+        System.out.printf("Using Scala @BeanProperty instance property in %s\n",
+                          instance.instanceProperty());
+        // @BooleanBeanProperty generates conventional getter/setter for booleans.
+        instance.setInstanceBooleanBeanProperty(true);
+        System.out.printf("Using Scala @BooleanBeanProperty instance property in Java: %b\n",
+                          instance.isInstanceBooleanBeanProperty());
+        // Regular Scala getter/setter are still available
+        instance.instanceBooleanBeanProperty_$eq(true);
+        System.out.printf("Using Scala @BooleanBeanProperty instance property in Java: %b\n",
+                          instance.instanceBooleanBeanProperty());
         instance.instanceMethod(LANG);
 
         // The ScalaObject instance is available in interop.scala.lib.ScalaObject$.MODULES$
         ScalaObject.objectProperty_$eq(LANG);
         System.out.printf("Using Scala object property in %s\n", ScalaObject.objectProperty());
+        // @BeanProperty generates conventional getter/setter.
+        ScalaObject.setObjectBeanProperty(LANG);
+        System.out.printf("Using Scala @BeanProperty object property in %s\n",
+                          ScalaObject.getObjectBeanProperty());
+        // Regular Scala getter/setter are still available
+        ScalaObject.objectBeanProperty_$eq(LANG);
+        System.out.printf("Using Scala @BeanProperty object property in %s\n",
+                          ScalaObject.objectBeanProperty());
+        // @BooleanBeanProperty generates conventional getter/setter for booleans.
+        ScalaObject.setObjectBooleanBeanProperty(true);
+        System.out.printf("Using Scala @BooleanBeanProperty object property in Java: %b\n",
+                          ScalaObject.isObjectBooleanBeanProperty());
+        // Regular Scala getter/setter are still available
+        ScalaObject.objectBooleanBeanProperty_$eq(true);
+        System.out.printf("Using Scala @BooleanBeanProperty object property in Java: %b\n",
+                          ScalaObject.objectBooleanBeanProperty());
         ScalaObject.objectMethod(LANG);
 
         // Parameter lists are flattened together.
