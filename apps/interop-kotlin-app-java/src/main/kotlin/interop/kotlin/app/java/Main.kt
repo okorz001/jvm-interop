@@ -43,9 +43,7 @@ fun main() {
 
     JavaLibrary.implementedInterface { LANG }
     JavaLibrary.extendedBaseClass(object : JavaBaseClass() {
-        override fun getLanguage(): String {
-            return LANG
-        }
+        override fun getLanguage() = LANG
     })
     JavaLibrary.usedTypeAnnotation(UseJavaAnnotations())
     JavaLibrary.usedConstructorAnnotation(UseJavaAnnotations())

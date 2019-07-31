@@ -80,13 +80,9 @@ fun main() {
     implementedFunctionWithReceiver { LANG }
     implementedCurriedFunction { { LANG } }
     implementedInterface(object : KotlinInterface {
-        override fun getLanguage(): String {
-            return LANG
-        }
+        override fun getLanguage() = LANG
     })
     extendedBaseClass(object : KotlinBaseClass() {
-        override fun getLanguage(): String {
-            return LANG
-        }
+        override fun getLanguage() = LANG
     })
 }
