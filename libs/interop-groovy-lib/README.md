@@ -31,6 +31,7 @@ Extensible API:
 * Closures with delegates
 * Interfaces
 * Traits
+* Traits with properties
 * Base classes
 * Annotations
   * Types

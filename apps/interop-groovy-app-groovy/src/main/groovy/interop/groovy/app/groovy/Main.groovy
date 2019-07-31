@@ -6,6 +6,7 @@ import interop.groovy.lib.GroovyFieldAnnotation
 import interop.groovy.lib.GroovyLibrary
 import interop.groovy.lib.GroovyMethodAnnotation
 import interop.groovy.lib.GroovyParameterAnnotation
+import interop.groovy.lib.GroovyTraitWithProperty
 import interop.groovy.lib.GroovyTypeAnnotation
 
 final String LANG = "Groovy"
@@ -74,6 +75,10 @@ GroovyLibrary.implementedClosure { LANG }
 GroovyLibrary.implementedClosureWithDelegate { message.call(LANG) }
 GroovyLibrary.implementedInterface { LANG }
 GroovyLibrary.implementedTrait { LANG }
+// Anonymous classes cannot implement traits
+// Groovy automatically implements the property with default getters/setters
+class MyTraitWithProperty implements GroovyTraitWithProperty {}
+GroovyLibrary.implementedTraitWithProperty(LANG, new MyTraitWithProperty())
 GroovyLibrary.extendedBaseClass { LANG }
 GroovyLibrary.usedTypeAnnotation(new UseGroovyAnnotations())
 GroovyLibrary.usedConstructorAnnotation(new UseGroovyAnnotations())

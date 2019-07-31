@@ -53,6 +53,11 @@ class GroovyLibrary {
         println "Implemented Groovy trait in ${it.getLanguage()}"
     }
 
+    static implementedTraitWithProperty(String from, GroovyTraitWithProperty it) {
+        it.language = from
+        println "Implemented Groovy trait with property in ${it.language}"
+    }
+
     static extendedBaseClass(GroovyBaseClass it) {
         println "Extended Groovy class in ${it.getLanguage()}"
     }

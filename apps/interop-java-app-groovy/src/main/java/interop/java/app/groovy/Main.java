@@ -13,6 +13,7 @@ import interop.groovy.lib.GroovyLibrary;
 import interop.groovy.lib.GroovyMethodAnnotation;
 import interop.groovy.lib.GroovyParameterAnnotation;
 import interop.groovy.lib.GroovyStaticExtensionMethods;
+import interop.groovy.lib.GroovyTraitWithProperty;
 import interop.groovy.lib.GroovyTypeAnnotation;
 import org.codehaus.groovy.runtime.DefaultGroovyMethods;
 
@@ -109,6 +110,20 @@ public class Main {
         });
         GroovyLibrary.implementedInterface(() -> LANG);
         GroovyLibrary.implementedTrait(() -> LANG);
+        // Java implementation must implement the getter/setter.
+        GroovyLibrary.implementedTraitWithProperty(LANG, new GroovyTraitWithProperty() {
+            private String language = "";
+
+            @Override
+            public String getLanguage() {
+                return language;
+            }
+
+            @Override
+            public void setLanguage(final String language) {
+                this.language = language;
+            }
+        });
         GroovyLibrary.extendedBaseClass(new GroovyBaseClass() {
             @Override
             public String getLanguage() {
