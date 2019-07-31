@@ -23,6 +23,7 @@ Directly Callable API:
 * Instance dynamic methods
 * Default arguments
 * Named parameters
+* Varargs
 
 Extensible API:
 

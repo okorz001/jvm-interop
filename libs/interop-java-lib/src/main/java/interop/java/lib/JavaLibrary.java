@@ -1,10 +1,14 @@
 package interop.java.lib;
 
 import java.lang.reflect.Executable;
+import java.util.Arrays;
 import java.util.Objects;
 import java.util.stream.Stream;
 
 public class JavaLibrary {
+    public static void varargs(String from, Object... args) {
+        System.out.printf("Called Java method with varargs from %s with %s\n", from, Arrays.asList(args));
+    }
 
     public static void implementedInterface(JavaInterface it) {
         System.out.println("Implemented Java interface in " + it.getLanguage());

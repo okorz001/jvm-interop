@@ -32,6 +32,7 @@ Directly Callable API:
 * _Data classes_
 * _Sealed classes_
 * Default arguments
+* Varargs
 
 Extensible API:
 

@@ -87,6 +87,12 @@ public class Main {
         GroovyLibrary.namedParameters(Collections.emptyMap(), LANG);
         GroovyLibrary.namedParameters(LANG);
 
+        GroovyLibrary.varargs(LANG);
+        GroovyLibrary.varargs(LANG,1);
+        GroovyLibrary.varargs(LANG, 1, 2);
+        // Varargs can also be called with an array
+        GroovyLibrary.varargs(LANG, new Object[]{1, 2});
+
         // Use null for owner since we have no instance in a static method.
         GroovyLibrary.implementedClosure(new Closure<String>(null){
             @SuppressWarnings("unused") // called by reflection

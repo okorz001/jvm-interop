@@ -1,14 +1,24 @@
 package interop.java.app.scala;
 
+import java.util.Arrays;
+import java.util.Collections;
+
 import interop.scala.lib.ScalaBaseClass;
 import interop.scala.lib.ScalaLibrary;
 import interop.scala.lib.ScalaTraitWithProperty;
 import interop.scala.lib.package$;
 import interop.scala.lib.ScalaClass;
 import interop.scala.lib.ScalaObject;
+import scala.collection.immutable.Seq;
+import scala.jdk.javaapi.CollectionConverters;
 
 public class Main {
     private static final String LANG = "Java";
+
+    private static <T> Seq<T> toSeq(Iterable<T> it) {
+        // CollectionConverters provides adapters for Java collections (but not arrays).
+        return CollectionConverters.asScala(it).toSeq();
+    }
 
     public static void main(String[] args) {
         // The package methods are available as static methods on the interop.scala.lib.package class.
@@ -39,6 +49,17 @@ public class Main {
         // Scala does not generate overloads for default arguments.
         // Java callers must know the default values. Adding new default arguments is a breaking change for Java.
         ScalaLibrary.defaultArguments(LANG, 1, 2);
+
+        // Scala varargs are passed as a Seq.
+        ScalaLibrary.varargs(LANG, toSeq(Collections.emptyList()));
+        ScalaLibrary.varargs(LANG, toSeq(Collections.singleton(1)));
+        ScalaLibrary.varargs(LANG, toSeq(Arrays.asList(1, 2)));
+        // @varargs changes it from Seq to array which is much easier for Java callers.
+        ScalaLibrary.varargsWithAnnotation(LANG);
+        ScalaLibrary.varargsWithAnnotation(LANG, 1);
+        ScalaLibrary.varargsWithAnnotation(LANG, 1, 2);
+        // @varargs can also be called with an array
+        ScalaLibrary.varargsWithAnnotation(LANG, new Object[]{1, 2});
 
         ScalaLibrary.implementedFunction(() -> LANG);
         ScalaLibrary.implementedCurriedFunction(() -> () -> LANG);

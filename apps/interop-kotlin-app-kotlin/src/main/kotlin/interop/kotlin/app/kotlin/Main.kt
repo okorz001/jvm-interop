@@ -19,6 +19,7 @@ import interop.kotlin.lib.objectExtensionFunction
 import interop.kotlin.lib.objectExtensionProperty
 import interop.kotlin.lib.packageFunction
 import interop.kotlin.lib.packageProperty
+import interop.kotlin.lib.varargs
 
 private const val LANG = "Kotlin"
 
@@ -68,6 +69,12 @@ fun main() {
     defaultArguments(LANG, b = 2)
     // named arguments can be in any order
     defaultArguments(LANG, b = 2, a = 1)
+
+    varargs(LANG)
+    varargs(LANG, 1)
+    varargs(LANG, 1, 2)
+    // An array cannot be passed directly, but you can use the spread operator.
+    varargs(LANG, *arrayOf(1, 2))
 
     implementedFunction { LANG }
     implementedFunctionWithReceiver { LANG }

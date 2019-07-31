@@ -56,6 +56,12 @@ public class Main {
         // Java callers must know the default values. Adding new default arguments is a breaking change for Java.
         KotlinLibraryKt.defaultArguments(LANG, 1, 2);
 
+        KotlinLibraryKt.varargs(LANG);
+        KotlinLibraryKt.varargs(LANG,1 );
+        KotlinLibraryKt.varargs(LANG, 1, 2);
+        // Varargs can also be called with an array
+        KotlinLibraryKt.varargs(LANG, new Object[]{1, 2});
+
         KotlinLibraryKt.implementedFunction(() -> LANG);
         KotlinLibraryKt.implementedFunctionWithReceiver(it -> LANG);
         KotlinLibraryKt.implementedCurriedFunction(() -> () -> LANG);

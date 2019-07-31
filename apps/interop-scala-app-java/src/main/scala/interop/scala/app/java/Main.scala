@@ -29,6 +29,14 @@ object Main extends App {
   println(s"Using Java instance field in ${instance.instanceField}")
   instance.instanceMethod(LANG)
 
+  JavaLibrary.varargs(LANG)
+  JavaLibrary.varargs(LANG, 1)
+  JavaLibrary.varargs(LANG, 1, 2)
+  // Scala Array cannot be directly passed as varargs.
+  // The vararg type ascription can be used to unwrap the Array (or Seq or other collections) into arguments.
+  JavaLibrary.varargs(LANG, Array(1, 2) : _*)
+  JavaLibrary.varargs(LANG, Seq(1, 2) : _*)
+
   JavaLibrary.implementedInterface(() => LANG)
   JavaLibrary.extendedBaseClass(() => LANG)
   JavaLibrary.usedTypeAnnotation(new UseJavaAnnotations)

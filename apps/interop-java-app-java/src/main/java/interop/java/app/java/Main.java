@@ -36,6 +36,12 @@ public class Main {
         System.out.printf("Using Java instance field in %s\n", instance.instanceField);
         instance.instanceMethod(LANG);
 
+        JavaLibrary.varargs(LANG);
+        JavaLibrary.varargs(LANG, 1);
+        JavaLibrary.varargs(LANG, 1, 2);
+        // Varargs can also be called with an array
+        JavaLibrary.varargs(LANG, new Object[]{1, 2});
+
         JavaLibrary.implementedInterface(() -> LANG);
         JavaLibrary.extendedBaseClass(new JavaBaseClass() {
             @Override

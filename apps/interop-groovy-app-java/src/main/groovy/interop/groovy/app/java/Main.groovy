@@ -38,6 +38,12 @@ instance.instanceField = LANG
 println("Using Java instance field in ${instance.instanceField}")
 instance.instanceMethod(LANG)
 
+JavaLibrary.varargs(LANG)
+JavaLibrary.varargs(LANG, 1)
+JavaLibrary.varargs(LANG, 1, 2)
+// Varargs can also be called with an array
+JavaLibrary.varargs(LANG, [1, 2] as Object[])
+
 JavaLibrary.implementedInterface({ LANG })
 JavaLibrary.extendedBaseClass({ LANG })
 JavaLibrary.usedTypeAnnotation(new UseJavaAnnotations())

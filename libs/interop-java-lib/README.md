@@ -13,6 +13,7 @@ Directly Callable API:
 * Constructors
 * Instance fields
 * Instance methods
+* Varargs
 
 Extensible API:
 

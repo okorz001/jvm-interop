@@ -24,6 +24,10 @@ class GroovyLibrary {
         println("Called Groovy method with named parameters from ${from} with no named parameters")
     }
 
+    static varargs(String from, Object... args) {
+        println("Called Groovy method with varargs from ${from} with ${args}")
+    }
+
     static implementedClosure(Closure<String> c) {
         println "Implemented Groovy closure in ${c()}"
     }

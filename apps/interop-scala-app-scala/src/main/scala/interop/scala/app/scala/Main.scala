@@ -33,6 +33,20 @@ object Main extends App {
   // named arguments can be in any order
   ScalaLibrary.defaultArguments(LANG, b = 2, a = 1)
 
+  ScalaLibrary.varargs(LANG)
+  ScalaLibrary.varargs(LANG, 1)
+  ScalaLibrary.varargs(LANG, 1, 2)
+  // Scala Array cannot be directly passed as varargs.
+  // The vararg type ascription can be used to unwrap the Array (or Seq or other collections) into arguments.
+  ScalaLibrary.varargs(LANG, Array(1, 2) : _*)
+  // @varargs has no effect on Scala callers
+  ScalaLibrary.varargsWithAnnotation(LANG, Seq(1, 2) : _*)
+  ScalaLibrary.varargsWithAnnotation(LANG)
+  ScalaLibrary.varargsWithAnnotation(LANG, 1)
+  ScalaLibrary.varargsWithAnnotation(LANG, 1, 2)
+  ScalaLibrary.varargsWithAnnotation(LANG, Array(1, 2) : _*)
+  ScalaLibrary.varargsWithAnnotation(LANG, Seq(1, 2) : _*)
+
   ScalaLibrary.implementedFunction(() => LANG)
   ScalaLibrary.implementedCurriedFunction(() => () => LANG)
   ScalaLibrary.implementedTrait(new ScalaTrait {

@@ -1,5 +1,7 @@
 package interop.scala.lib
 
+import scala.annotation.varargs
+
 object ScalaLibrary {
   def multipleParameterLists(from: String)(arg: Any): Unit = {
     println(s"Called Scala method with multiple parameter lists from $from with $arg")
@@ -7,6 +9,17 @@ object ScalaLibrary {
 
   def defaultArguments(from: String, a: Any = "default", b: Any = "default"): Unit = {
     println(s"Called Scala method with default arguments from $from with a=$a and b=$b")
+  }
+
+  def varargs(from: String, args: Any*): Unit = {
+    val argsStr = args.mkString("[", ", ", "]")
+    println(s"Called Scala method with varargs from $from with $argsStr")
+  }
+
+  @varargs
+  def varargsWithAnnotation(from: String, args: Any*): Unit = {
+    val argsStr = args.mkString("[", ", ", "]")
+    println(s"Called Scala @varargs method with varargs from $from with $argsStr")
   }
 
   def implementedFunction(it: () => String): Unit = {

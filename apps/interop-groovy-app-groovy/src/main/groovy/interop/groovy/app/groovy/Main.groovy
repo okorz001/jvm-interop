@@ -64,6 +64,12 @@ GroovyLibrary.namedParameters([:], LANG)
 // alternatively, an overload can be provided without the first map parameter
 GroovyLibrary.namedParameters(LANG)
 
+GroovyLibrary.varargs(LANG)
+GroovyLibrary.varargs(LANG, 1)
+GroovyLibrary.varargs(LANG, 1, 2)
+// Varargs can also be called with an array
+GroovyLibrary.varargs(LANG, [1, 2] as Object[])
+
 GroovyLibrary.implementedClosure { LANG }
 GroovyLibrary.implementedClosureWithDelegate { message.call(LANG) }
 GroovyLibrary.implementedInterface { LANG }

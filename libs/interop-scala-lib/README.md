@@ -20,6 +20,8 @@ Directly Callable API:
 * _Case classes_
 * Multiple parameters lists
 * Default arguments
+* Varargs
+* `@varargs` varargs
 
 Extensible API:
 

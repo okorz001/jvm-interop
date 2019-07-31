@@ -34,6 +34,13 @@ fun main() {
     println("Using Java instance field in ${instance.instanceField}")
     instance.instanceMethod(LANG)
 
+    JavaLibrary.varargs(LANG)
+    JavaLibrary.varargs(LANG, 1)
+    JavaLibrary.varargs(LANG, 1, 2)
+    // Kotlin Array cannot be directly passed as varargs.
+    // The spread operator can be used to unwrap the Array into arguments.
+    JavaLibrary.varargs(LANG, *arrayOf(1, 2))
+
     JavaLibrary.implementedInterface { LANG }
     JavaLibrary.extendedBaseClass(object : JavaBaseClass() {
         override fun getLanguage(): String {
