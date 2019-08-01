@@ -41,4 +41,12 @@ Extensible API:
 * Curried functions
 * Interfaces
 * Base classes
-* _Annotations_
+* Annotations
+  * Classes
+  * Constructors
+  * Functions
+  * Properties
+  * Property Getters
+  * Property Setters
+  * Fields
+  * Value Parameters

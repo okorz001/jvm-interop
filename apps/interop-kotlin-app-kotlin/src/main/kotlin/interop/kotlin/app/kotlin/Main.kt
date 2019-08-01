@@ -1,27 +1,66 @@
 package interop.kotlin.app.kotlin
 
-// Cannot import package directly, so this gets pretty ugly without *.
-import interop.kotlin.lib.extendedBaseClass
-import interop.kotlin.lib.instanceExtensionFunction
-import interop.kotlin.lib.implementedFunction
-import interop.kotlin.lib.implementedFunctionWithReceiver
-import interop.kotlin.lib.implementedInterface
 import interop.kotlin.lib.KotlinBaseClass
 import interop.kotlin.lib.KotlinClass
+import interop.kotlin.lib.KotlinClassAnnotation
+import interop.kotlin.lib.KotlinConstructorAnnotation
+import interop.kotlin.lib.KotlinFieldAnnotation
+import interop.kotlin.lib.KotlinFunctionAnnotation
 import interop.kotlin.lib.KotlinInterface
 import interop.kotlin.lib.KotlinObject
+import interop.kotlin.lib.KotlinPropertyAnnotation
+import interop.kotlin.lib.KotlinPropertyGetterAnnotation
+import interop.kotlin.lib.KotlinPropertySetterAnnotation
+import interop.kotlin.lib.KotlinValueParameterAnnotation
+// Cannot import package directly, so this gets pretty ugly without *.
 import interop.kotlin.lib.companionExtensionFunction
 import interop.kotlin.lib.companionExtensionProperty
 import interop.kotlin.lib.defaultArguments
+import interop.kotlin.lib.extendedBaseClass
 import interop.kotlin.lib.implementedCurriedFunction
+import interop.kotlin.lib.implementedFunction
+import interop.kotlin.lib.implementedFunctionWithReceiver
+import interop.kotlin.lib.implementedInterface
+import interop.kotlin.lib.instanceExtensionFunction
 import interop.kotlin.lib.instanceExtensionProperty
 import interop.kotlin.lib.objectExtensionFunction
 import interop.kotlin.lib.objectExtensionProperty
 import interop.kotlin.lib.packageFunction
 import interop.kotlin.lib.packageProperty
+import interop.kotlin.lib.usedClassAnnotation
+import interop.kotlin.lib.usedConstructorAnnotation
+import interop.kotlin.lib.usedFieldAnnotation
+import interop.kotlin.lib.usedFunctionAnnotation
+import interop.kotlin.lib.usedPropertyAnnotation
+import interop.kotlin.lib.usedPropertyGetterAnnotation
+import interop.kotlin.lib.usedPropertySetterAnnotation
+import interop.kotlin.lib.usedValueParameterAnnotation
 import interop.kotlin.lib.varargs
 
 private const val LANG = "Kotlin"
+
+@KotlinClassAnnotation(LANG)
+class UseKotlinAnnotations @KotlinConstructorAnnotation(LANG) constructor(
+    @KotlinPropertyAnnotation(LANG)
+    // get use-site target must be used to avoid annotating the constructor parameter.
+    @get:KotlinPropertyGetterAnnotation(LANG)
+    // set use-site target must be used to avoid annotating the constructor parameter.
+    @set:KotlinPropertySetterAnnotation(LANG)
+    var property: Int = 0,
+
+    // Must use @JvmField to force a public field instead of a property.
+    // Alternatively, the field use-site target can be used.
+    // However, the backing field is always private, so it is not visible with getFields().
+    // Private fields are still visible with getDeclaredFields(), but this violates access control.
+    @JvmField
+    @KotlinFieldAnnotation(LANG)
+    var field: Int = 0
+) {
+    @KotlinFunctionAnnotation(LANG)
+    fun method() {}
+
+    fun method(@KotlinValueParameterAnnotation(LANG) param: Int) {}
+}
 
 fun main() {
     packageProperty = LANG
@@ -85,4 +124,13 @@ fun main() {
     extendedBaseClass(object : KotlinBaseClass() {
         override fun getLanguage() = LANG
     })
+
+    usedClassAnnotation(UseKotlinAnnotations())
+    usedConstructorAnnotation(UseKotlinAnnotations())
+    usedFunctionAnnotation(UseKotlinAnnotations())
+    usedPropertyAnnotation(UseKotlinAnnotations())
+    usedPropertyGetterAnnotation(UseKotlinAnnotations())
+    usedPropertySetterAnnotation(UseKotlinAnnotations())
+    usedFieldAnnotation(UseKotlinAnnotations())
+    usedValueParameterAnnotation(UseKotlinAnnotations())
 }

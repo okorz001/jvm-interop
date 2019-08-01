@@ -13,7 +13,10 @@ private const val LANG = "Kotlin"
 
 @JavaTypeAnnotation(LANG)
 class UseJavaAnnotations @JavaConstructorAnnotation(LANG) constructor(
-    // Must use @JvmField to force a field instead of a property
+    // Must use @JvmField to force a public field instead of a property.
+    // Alternatively, the field use-site target can be used.
+    // However, the backing field is always private, so it is not visible with getFields().
+    // Private fields are still visible with getDeclaredFields(), but this violates access control.
     @JavaFieldAnnotation(LANG)
     @JvmField
     var field: Int = 0

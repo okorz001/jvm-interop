@@ -2,13 +2,43 @@ package interop.java.app.kotlin;
 
 import interop.kotlin.lib.KotlinBaseClass;
 import interop.kotlin.lib.KotlinClass;
+import interop.kotlin.lib.KotlinClassAnnotation;
+import interop.kotlin.lib.KotlinConstructorAnnotation;
+import interop.kotlin.lib.KotlinFieldAnnotation;
+import interop.kotlin.lib.KotlinFunctionAnnotation;
 import interop.kotlin.lib.KotlinLibraryKt;
 import interop.kotlin.lib.KotlinObject;
-
+import interop.kotlin.lib.KotlinPropertyGetterAnnotation;
+import interop.kotlin.lib.KotlinPropertySetterAnnotation;
+import interop.kotlin.lib.KotlinValueParameterAnnotation;
 import org.jetbrains.annotations.NotNull;
 
 public class Main {
     private static final String LANG = "Java";
+
+    @KotlinClassAnnotation(from = LANG)
+    public static class UseKotlinAnnotations {
+        @KotlinFieldAnnotation(from = LANG)
+        public int field;
+
+        @KotlinConstructorAnnotation(from = LANG)
+        public UseKotlinAnnotations() {}
+
+        @KotlinFunctionAnnotation(from = LANG)
+        public void method() {}
+
+        public void method(@KotlinValueParameterAnnotation(from = LANG) int param) {}
+
+        @KotlinPropertyGetterAnnotation(from = LANG)
+        public int getProperty() {
+            return field;
+        }
+
+        @KotlinPropertySetterAnnotation(from = LANG)
+        public void setProperty(int field) {
+            this.field = field;
+        }
+    }
 
     public static void main(String[] args) {
         KotlinLibraryKt.setPackageProperty(LANG);
@@ -73,5 +103,15 @@ public class Main {
                 return LANG;
             }
         });
+
+        KotlinLibraryKt.usedClassAnnotation(new UseKotlinAnnotations());
+        KotlinLibraryKt.usedConstructorAnnotation(new UseKotlinAnnotations());
+        KotlinLibraryKt.usedFunctionAnnotation(new UseKotlinAnnotations());
+        // @KotlinPropertyAnnotation cannot be applied to a Java field or method
+        //KotlinLibraryKt.usedPropertyAnnotation(new UseKotlinAnnotations());
+        KotlinLibraryKt.usedPropertyGetterAnnotation(new UseKotlinAnnotations());
+        KotlinLibraryKt.usedPropertySetterAnnotation(new UseKotlinAnnotations());
+        KotlinLibraryKt.usedFieldAnnotation(new UseKotlinAnnotations());
+        KotlinLibraryKt.usedValueParameterAnnotation(new UseKotlinAnnotations());
     }
 }
