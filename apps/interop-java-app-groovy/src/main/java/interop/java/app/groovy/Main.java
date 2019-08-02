@@ -5,6 +5,7 @@ import java.util.Collections;
 import groovy.lang.Closure;
 import groovy.lang.GroovyObject;
 import interop.groovy.lib.GroovyBaseClass;
+import interop.groovy.lib.GroovyCategory;
 import interop.groovy.lib.GroovyClass;
 import interop.groovy.lib.GroovyConstructorAnnotation;
 import interop.groovy.lib.GroovyExtensionMethods;
@@ -78,6 +79,7 @@ public class Main {
         // Dynamic methods are accessed through the MetaClass.
         // GroovyObject's invokeMethod handles this for us.
         asPOGO(instance).invokeMethod("staticDynamicMethod", new Object[]{LANG});
+        GroovyCategory.categoryMethod(instance, LANG);
 
         // Default arguments are implemented as overloads.
         GroovyLibrary.defaultArguments(LANG, 1, 2);

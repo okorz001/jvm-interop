@@ -1,5 +1,6 @@
 package interop.groovy.app.groovy
 
+import interop.groovy.lib.GroovyCategory
 import interop.groovy.lib.GroovyClass
 import interop.groovy.lib.GroovyConstructorAnnotation
 import interop.groovy.lib.GroovyFieldAnnotation
@@ -49,6 +50,7 @@ println("Using Groovy instance dynamic property in ${instance.instanceDynamicPro
 instance.instanceMethod(LANG)
 instance.instanceExtensionMethod(LANG)
 instance.instanceDynamicMethod(LANG)
+use(GroovyCategory) { instance.categoryMethod(LANG) }
 
 GroovyLibrary.defaultArguments(LANG, 1, 2)
 GroovyLibrary.defaultArguments(LANG, 1)

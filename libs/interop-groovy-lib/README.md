@@ -21,6 +21,7 @@ Directly Callable API:
 * Instance methods
 * Instance extension methods
 * Instance dynamic methods
+* Categories
 * Default arguments
 * Named parameters
 * Varargs
