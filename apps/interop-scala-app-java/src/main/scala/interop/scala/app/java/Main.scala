@@ -38,6 +38,7 @@ object Main extends App {
   JavaLibrary.varargs(LANG, Seq(1, 2) : _*)
 
   JavaLibrary.implementedInterface(() => LANG)
+  JavaLibrary.implementedInterfaceWithMethod(() => LANG)
   JavaLibrary.extendedBaseClass(() => LANG)
   JavaLibrary.usedTypeAnnotation(new UseJavaAnnotations)
   JavaLibrary.usedConstructorAnnotation(new UseJavaAnnotations)

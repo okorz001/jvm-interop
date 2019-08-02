@@ -45,6 +45,7 @@ fun main() {
     JavaLibrary.varargs(LANG, *arrayOf(1, 2))
 
     JavaLibrary.implementedInterface { LANG }
+    JavaLibrary.implementedInterfaceWithMethod { LANG }
     JavaLibrary.extendedBaseClass(object : JavaBaseClass() {
         override fun getLanguage() = LANG
     })

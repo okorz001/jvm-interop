@@ -14,6 +14,10 @@ public class JavaLibrary {
         System.out.println("Implemented Java interface in " + it.getLanguage());
     }
 
+    public static void implementedInterfaceWithMethod(JavaInterfaceWithMethod it) {
+        it.interfaceMethod();
+    }
+
     public static void extendedBaseClass(JavaBaseClass it) {
         System.out.println("Extended Java class in " + it.getLanguage());
     }

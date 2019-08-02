@@ -45,6 +45,7 @@ JavaLibrary.varargs(LANG, 1, 2)
 JavaLibrary.varargs(LANG, [1, 2] as Object[])
 
 JavaLibrary.implementedInterface({ LANG })
+JavaLibrary.implementedInterfaceWithMethod({ LANG })
 JavaLibrary.extendedBaseClass({ LANG })
 JavaLibrary.usedTypeAnnotation(new UseJavaAnnotations())
 JavaLibrary.usedConstructorAnnotation(new UseJavaAnnotations())

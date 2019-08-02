@@ -18,6 +18,7 @@ Directly Callable API:
 Extensible API:
 
 * Interfaces
+* Interfaces with methods
 * Base classes
 * Annotations
   * Types

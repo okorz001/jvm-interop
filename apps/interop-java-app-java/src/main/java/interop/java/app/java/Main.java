@@ -43,6 +43,7 @@ public class Main {
         JavaLibrary.varargs(LANG, new Object[]{1, 2});
 
         JavaLibrary.implementedInterface(() -> LANG);
+        JavaLibrary.implementedInterfaceWithMethod(() -> LANG);
         JavaLibrary.extendedBaseClass(new JavaBaseClass() {
             @Override
             public String getLanguage() {
