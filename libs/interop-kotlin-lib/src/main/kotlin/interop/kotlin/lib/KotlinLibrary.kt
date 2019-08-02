@@ -44,6 +44,10 @@ fun KotlinObject.objectExtensionFunction(from: String) = println("Calling Kotlin
 fun defaultArguments(from: String, a: Any = "default", b: Any = "default") =
     println("Called Kotlin function with default arguments from $from with a=$a and b=$b")
 
+@JvmOverloads
+fun defaultArgumentsOverloads(from: String, a: Any = "default", b: Any = "default") =
+    println("Called Kotlin @JvmOverloads function with default arguments from $from with a=$a and b=$b")
+
 fun varargs(from: String, vararg args: Any) =
     println("Called Kotlin function with varargs from $from with ${listOf(*args)}")
 

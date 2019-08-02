@@ -82,9 +82,15 @@ public class Main {
         KotlinObject.staticMethod(LANG);
         KotlinLibraryKt.objectExtensionFunction(KotlinObject.INSTANCE, LANG);
 
-        // Kotlin does not generate overloads for default arguments.
+        // By default, Kotlin does not generate overloads for default arguments.
         // Java callers must know the default values. Adding new default arguments is a breaking change for Java.
         KotlinLibraryKt.defaultArguments(LANG, 1, 2);
+
+        // Kotlin will generate overloads with @JvmOverloads.
+        // Java callers still must know the default values since arguments must be passed in order.
+        KotlinLibraryKt.defaultArgumentsOverloads(LANG, 1, 2);
+        KotlinLibraryKt.defaultArgumentsOverloads(LANG, 1);
+        KotlinLibraryKt.defaultArgumentsOverloads(LANG);
 
         KotlinLibraryKt.varargs(LANG);
         KotlinLibraryKt.varargs(LANG,1 );

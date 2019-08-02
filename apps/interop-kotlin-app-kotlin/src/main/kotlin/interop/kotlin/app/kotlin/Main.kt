@@ -16,6 +16,7 @@ import interop.kotlin.lib.KotlinValueParameterAnnotation
 import interop.kotlin.lib.companionExtensionFunction
 import interop.kotlin.lib.companionExtensionProperty
 import interop.kotlin.lib.defaultArguments
+import interop.kotlin.lib.defaultArgumentsOverloads
 import interop.kotlin.lib.extendedBaseClass
 import interop.kotlin.lib.implementedCurriedFunction
 import interop.kotlin.lib.implementedFunction
@@ -108,6 +109,14 @@ fun main() {
     defaultArguments(LANG, b = 2)
     // named arguments can be in any order
     defaultArguments(LANG, b = 2, a = 1)
+
+    defaultArgumentsOverloads(LANG, 1, 2)
+    defaultArgumentsOverloads(LANG, 1)
+    defaultArgumentsOverloads(LANG)
+    // named arguments allow skipping positional arguments with defaults
+    defaultArgumentsOverloads(LANG, b = 2)
+    // named arguments can be in any order
+    defaultArgumentsOverloads(LANG, b = 2, a = 1)
 
     varargs(LANG)
     varargs(LANG, 1)
