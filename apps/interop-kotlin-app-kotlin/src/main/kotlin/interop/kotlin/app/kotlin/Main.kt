@@ -7,6 +7,8 @@ import interop.kotlin.lib.KotlinConstructorAnnotation
 import interop.kotlin.lib.KotlinFieldAnnotation
 import interop.kotlin.lib.KotlinFunctionAnnotation
 import interop.kotlin.lib.KotlinInterface
+import interop.kotlin.lib.KotlinInterfaceWithMethod
+import interop.kotlin.lib.KotlinInterfaceWithProperty
 import interop.kotlin.lib.KotlinObject
 import interop.kotlin.lib.KotlinPropertyAnnotation
 import interop.kotlin.lib.KotlinPropertyGetterAnnotation
@@ -22,6 +24,8 @@ import interop.kotlin.lib.implementedCurriedFunction
 import interop.kotlin.lib.implementedFunction
 import interop.kotlin.lib.implementedFunctionWithReceiver
 import interop.kotlin.lib.implementedInterface
+import interop.kotlin.lib.implementedInterfaceWithMethod
+import interop.kotlin.lib.implementedInterfaceWithProperty
 import interop.kotlin.lib.instanceExtensionFunction
 import interop.kotlin.lib.instanceExtensionProperty
 import interop.kotlin.lib.objectExtensionFunction
@@ -128,6 +132,12 @@ fun main() {
     implementedFunctionWithReceiver { LANG }
     implementedCurriedFunction { { LANG } }
     implementedInterface(object : KotlinInterface {
+        override fun getLanguage() = LANG
+    })
+    implementedInterfaceWithProperty(LANG, object : KotlinInterfaceWithProperty {
+        override var language: String = ""
+    })
+    implementedInterfaceWithMethod(object : KotlinInterfaceWithMethod {
         override fun getLanguage() = LANG
     })
     extendedBaseClass(object : KotlinBaseClass() {

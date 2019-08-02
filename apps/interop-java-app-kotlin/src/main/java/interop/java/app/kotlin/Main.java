@@ -6,6 +6,8 @@ import interop.kotlin.lib.KotlinClassAnnotation;
 import interop.kotlin.lib.KotlinConstructorAnnotation;
 import interop.kotlin.lib.KotlinFieldAnnotation;
 import interop.kotlin.lib.KotlinFunctionAnnotation;
+import interop.kotlin.lib.KotlinInterfaceWithMethod;
+import interop.kotlin.lib.KotlinInterfaceWithProperty;
 import interop.kotlin.lib.KotlinLibraryKt;
 import interop.kotlin.lib.KotlinObject;
 import interop.kotlin.lib.KotlinPropertyGetterAnnotation;
@@ -102,6 +104,36 @@ public class Main {
         KotlinLibraryKt.implementedFunctionWithReceiver(it -> LANG);
         KotlinLibraryKt.implementedCurriedFunction(() -> () -> LANG);
         KotlinLibraryKt.implementedInterface(() -> LANG);
+        // Java implementation must implement the getter/setter.
+        KotlinLibraryKt.implementedInterfaceWithProperty(LANG, new KotlinInterfaceWithProperty() {
+            private String language = "";
+
+            @NotNull
+            @Override
+            public String getLanguage() {
+                return language;
+            }
+
+            @Override
+            public void setLanguage(@NotNull final String language) {
+                this.language = language;
+            }
+        });
+        KotlinLibraryKt.implementedInterfaceWithMethod(new KotlinInterfaceWithMethod() {
+            @NotNull
+            @Override
+            public String getLanguage() {
+                return LANG;
+            }
+
+            // Java classes must implement all interface methods
+            @Override
+            public void interfaceMethod() {
+                // Non-abstract instance methods are in a static DefaultImpls class.
+                // The interface instance is passed as the first argument.
+                KotlinInterfaceWithMethod.DefaultImpls.interfaceMethod(this);
+            }
+        });
         KotlinLibraryKt.extendedBaseClass(new KotlinBaseClass() {
             @NotNull
             @Override

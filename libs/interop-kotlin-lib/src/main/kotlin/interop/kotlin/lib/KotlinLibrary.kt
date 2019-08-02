@@ -60,6 +60,13 @@ fun implementedCurriedFunction(it: () -> () -> String) = println("Implemented Ko
 
 fun implementedInterface(it: KotlinInterface) = println("Implemented Kotlin interface in ${it.getLanguage()}")
 
+fun implementedInterfaceWithProperty(from: String, it: KotlinInterfaceWithProperty) {
+    it.language = from
+    println("Implemented Kotlin interface with property in ${it.language}")
+}
+
+fun implementedInterfaceWithMethod(it: KotlinInterfaceWithMethod) = it.interfaceMethod()
+
 fun extendedBaseClass(it: KotlinBaseClass) = println("Extended Kotlin base class in ${it.getLanguage()}")
 
 fun usedClassAnnotation(it: Any) {

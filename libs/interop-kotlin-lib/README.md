@@ -40,6 +40,8 @@ Extensible API:
 * Functions with receivers
 * Curried functions
 * Interfaces
+* Interfaces with properties
+* Interfaces with methods
 * Base classes
 * Annotations
   * Classes
