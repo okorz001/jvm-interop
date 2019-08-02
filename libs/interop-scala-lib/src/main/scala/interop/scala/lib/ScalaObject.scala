@@ -11,5 +11,5 @@ object ScalaObject {
   @BooleanBeanProperty
   var objectBooleanBeanProperty: Boolean = false
 
-  def objectMethod(from: String): Unit = println(s"Calling Scala object method from $from")
+  def objectMethod(from: String): Unit = println(s"Called Scala object method from $from")
 }

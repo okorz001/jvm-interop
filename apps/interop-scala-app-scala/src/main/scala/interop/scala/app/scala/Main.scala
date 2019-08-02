@@ -8,36 +8,36 @@ object Main extends App {
   final val LANG = "Scala"
 
   packageProperty = LANG
-  println(s"Using Scala package property in $packageProperty")
+  println(s"Used Scala package property in $packageProperty")
   packageBeanProperty = LANG
-  println(s"Using Scala @BeanProperty package property in $packageBeanProperty")
+  println(s"Used Scala @BeanProperty package property in $packageBeanProperty")
   packageBooleanBeanProperty = true
-  println(s"Using Scala @BooleanBeanProperty package property in Scala: $packageBooleanBeanProperty")
+  println(s"Used Scala @BooleanBeanProperty package property in Scala: $packageBooleanBeanProperty")
   packageMethod(LANG)
 
   ScalaClass.companionProperty = LANG
-  println(s"Using Scala object property in ${ScalaClass.companionProperty}")
+  println(s"Used Scala object property in ${ScalaClass.companionProperty}")
   ScalaClass.companionBeanProperty = LANG
-  println(s"Using Scala @BeanProperty companion property in ${ScalaClass.companionBeanProperty}")
+  println(s"Used Scala @BeanProperty companion property in ${ScalaClass.companionBeanProperty}")
   ScalaClass.companionBooleanBeanProperty = true
-  println(s"Using Scala @BooleanBeanProperty companion property in Scala: ${ScalaClass.companionBooleanBeanProperty}")
+  println(s"Used Scala @BooleanBeanProperty companion property in Scala: ${ScalaClass.companionBooleanBeanProperty}")
   ScalaClass.companionMethod(LANG)
 
   val instance = new ScalaClass
   instance.instanceProperty = LANG
-  println(s"Using Scala instance property in ${instance.instanceProperty}")
+  println(s"Used Scala instance property in ${instance.instanceProperty}")
   instance.instanceBeanProperty = LANG
-  println(s"Using Scala @BeanProperty instance property in ${instance.instanceBeanProperty}")
+  println(s"Used Scala @BeanProperty instance property in ${instance.instanceBeanProperty}")
   instance.instanceBooleanBeanProperty = true
-  println(s"Using Scala @BooleanBeanProperty instance property in Scala: ${instance.instanceBooleanBeanProperty}")
+  println(s"Used Scala @BooleanBeanProperty instance property in Scala: ${instance.instanceBooleanBeanProperty}")
   instance.instanceMethod(LANG)
 
   ScalaObject.objectProperty = LANG
-  println(s"Using Scala object property in ${ScalaObject.objectProperty}")
+  println(s"Used Scala object property in ${ScalaObject.objectProperty}")
   ScalaObject.objectBeanProperty = LANG
-  println(s"Using Scala @BeanProperty object property in ${ScalaObject.objectBeanProperty}")
+  println(s"Used Scala @BeanProperty object property in ${ScalaObject.objectBeanProperty}")
   ScalaObject.objectBooleanBeanProperty = true
-  println(s"Using Scala @BooleanBeanProperty object property in Scala: ${ScalaObject.objectBooleanBeanProperty}")
+  println(s"Used Scala @BooleanBeanProperty object property in Scala: ${ScalaObject.objectBooleanBeanProperty}")
   ScalaObject.objectMethod(LANG)
 
   ScalaLibrary.multipleParameterLists(LANG)(1)

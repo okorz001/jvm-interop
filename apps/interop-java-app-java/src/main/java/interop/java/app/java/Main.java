@@ -28,12 +28,12 @@ public class Main {
 
     public static void main(String[] args) {
         JavaClass.staticField = LANG;
-        System.out.printf("Using Java static field in %s\n", JavaClass.staticField);
+        System.out.printf("Used Java static field in %s\n", JavaClass.staticField);
         JavaClass.staticMethod(LANG);
 
         JavaClass instance = new JavaClass();
         instance.instanceField = LANG;
-        System.out.printf("Using Java instance field in %s\n", instance.instanceField);
+        System.out.printf("Used Java instance field in %s\n", instance.instanceField);
         instance.instanceMethod(LANG);
 
         JavaLibrary.varargs(LANG);

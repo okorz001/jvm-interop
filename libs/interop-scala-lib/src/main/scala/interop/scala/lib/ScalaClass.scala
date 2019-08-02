@@ -11,7 +11,7 @@ class ScalaClass {
   @BooleanBeanProperty
   var instanceBooleanBeanProperty: Boolean = false
 
-  def instanceMethod(from: String): Unit = println(s"Calling Scala instance method from $from")
+  def instanceMethod(from: String): Unit = println(s"Called Scala instance method from $from")
 }
 
 object ScalaClass {
@@ -23,5 +23,5 @@ object ScalaClass {
   @BooleanBeanProperty
   var companionBooleanBeanProperty: Boolean = false
 
-  def companionMethod(from: String): Unit = println(s"Calling Scala companion method from $from")
+  def companionMethod(from: String): Unit = println(s"Called Scala companion method from $from")
 }

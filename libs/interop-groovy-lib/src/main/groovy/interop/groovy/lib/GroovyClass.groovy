@@ -8,7 +8,7 @@ class GroovyClass {
     private static Map staticDynamicProperties = [:]
 
     static staticMethod(from) {
-        println "Calling Groovy static method from ${from}"
+        println "Called Groovy static method from ${from}"
     }
 
     @SuppressWarnings("unused") // called by reflection
@@ -25,7 +25,7 @@ class GroovyClass {
     // unlike regular methodMissing, this one doesn't *require* the String type
     @SuppressWarnings("unused") // called by reflection
     static $static_methodMissing(String name, args) {
-        println "Calling Groovy static dynamic method from ${args[0]}"
+        println "Called Groovy static dynamic method from ${args[0]}"
     }
 
     String instanceProperty = ""
@@ -33,7 +33,7 @@ class GroovyClass {
     private Map instanceDynamicProperties = [:]
 
     def instanceMethod(from) {
-        println "Calling Groovy instance method from ${from}"
+        println "Called Groovy instance method from ${from}"
     }
 
     def propertyMissing(String name) {
@@ -46,6 +46,6 @@ class GroovyClass {
 
     // this doesn't work without the String type...
     def methodMissing(String name, args) {
-        println "Calling Groovy instance dynamic method from ${args[0]}"
+        println "Called Groovy instance dynamic method from ${args[0]}"
     }
 }

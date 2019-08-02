@@ -21,12 +21,12 @@ object Main extends App {
   }
 
   JavaClass.staticField = LANG
-  println(s"Using Java static field in ${JavaClass.staticField}")
+  println(s"Used Java static field in ${JavaClass.staticField}")
   JavaClass.staticMethod(LANG)
 
   val instance = new JavaClass
   instance.instanceField = LANG
-  println(s"Using Java instance field in ${instance.instanceField}")
+  println(s"Used Java instance field in ${instance.instanceField}")
   instance.instanceMethod(LANG)
 
   JavaLibrary.varargs(LANG)

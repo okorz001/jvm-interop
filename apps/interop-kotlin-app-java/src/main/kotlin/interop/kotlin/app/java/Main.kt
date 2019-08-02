@@ -29,12 +29,12 @@ class UseJavaAnnotations @JavaConstructorAnnotation(LANG) constructor(
 
 fun main() {
     JavaClass.staticField = LANG
-    println("Using Java static field in ${JavaClass.staticField}")
+    println("Used Java static field in ${JavaClass.staticField}")
     JavaClass.staticMethod(LANG)
 
     val instance = JavaClass()
     instance.instanceField = LANG
-    println("Using Java instance field in ${instance.instanceField}")
+    println("Used Java instance field in ${instance.instanceField}")
     instance.instanceMethod(LANG)
 
     JavaLibrary.varargs(LANG)

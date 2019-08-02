@@ -10,10 +10,10 @@ class KotlinClass {
         @JvmField
         var staticField: String = ""
 
-        fun companionMethod(from: String) = println("Calling Kotlin companion method from $from")
+        fun companionMethod(from: String) = println("Called Kotlin companion method from $from")
 
         @JvmStatic
-        fun staticMethod(from: String) = println("Calling Kotlin @JvmStatic companion method from $from")
+        fun staticMethod(from: String) = println("Called Kotlin @JvmStatic companion method from $from")
     }
 
     var instanceProperty: String = ""
@@ -21,5 +21,5 @@ class KotlinClass {
     @JvmField
     var instanceField: String = ""
 
-    fun instanceMethod(from: String) = println("Calling Kotlin instance method from $from")
+    fun instanceMethod(from: String) = println("Called Kotlin instance method from $from")
 }

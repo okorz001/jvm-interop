@@ -12,7 +12,7 @@ import kotlin.reflect.full.staticProperties
 
 var packageProperty: String = ""
 
-fun packageFunction(from: String) = println("Calling Kotlin package function from $from")
+fun packageFunction(from: String) = println("Called Kotlin package function from $from")
 
 // extension properties do not have their own backing fields
 private var companionExtensionData: String = ""
@@ -21,7 +21,7 @@ var KotlinClass.Companion.companionExtensionProperty: String
     set(value) { companionExtensionData = value }
 
 fun KotlinClass.Companion.companionExtensionFunction(from: String) =
-    println("Calling Kotlin companion extension function from $from")
+    println("Called Kotlin companion extension function from $from")
 
 // extension properties do not have their own backing fields
 // note: assigning an instance property to a global property is unexpected behavior, just for demonstration purposes
@@ -31,7 +31,7 @@ var KotlinClass.instanceExtensionProperty: String
     set(value) { instanceExtensionData = value }
 
 fun KotlinClass.instanceExtensionFunction(from: String) =
-    println("Calling Kotlin instance extension function from $from")
+    println("Called Kotlin instance extension function from $from")
 
 // extension properties do not have their own backing fields
 private var objectExtensionData: String = ""
@@ -39,7 +39,7 @@ var KotlinObject.objectExtensionProperty: String
     get() = objectExtensionData
     set(value) { objectExtensionData = value }
 
-fun KotlinObject.objectExtensionFunction(from: String) = println("Calling Kotlin object extension function from $from")
+fun KotlinObject.objectExtensionFunction(from: String) = println("Called Kotlin object extension function from $from")
 
 fun defaultArguments(from: String, a: Any = "default", b: Any = "default") =
     println("Called Kotlin function with default arguments from $from with a=$a and b=$b")

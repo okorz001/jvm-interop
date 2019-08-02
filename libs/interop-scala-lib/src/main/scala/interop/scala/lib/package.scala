@@ -11,5 +11,5 @@ package object lib {
   @BooleanBeanProperty
   var packageBooleanBeanProperty: Boolean = false
 
-  def packageMethod(from: String): Unit = println(s"Calling Scala package method from $from")
+  def packageMethod(from: String): Unit = println(s"Called Scala package method from $from")
 }

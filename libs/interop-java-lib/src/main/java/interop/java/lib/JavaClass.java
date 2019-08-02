@@ -9,12 +9,12 @@ public class JavaClass {
     public static String staticField = "";
 
     public static void staticMethod(String from) {
-        System.out.println("Calling Java static method from " + from);
+        System.out.println("Called Java static method from " + from);
     }
 
     public String instanceField = "";
 
     public void instanceMethod(String from) {
-        System.out.println("Calling Java instance method from " + from);
+        System.out.println("Called Java instance method from " + from);
     }
 }

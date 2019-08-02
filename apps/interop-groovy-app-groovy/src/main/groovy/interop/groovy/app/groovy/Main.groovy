@@ -31,22 +31,22 @@ class UseGroovyAnnotations {
 }
 
 GroovyClass.staticProperty = LANG
-println("Using Groovy static property in ${GroovyClass.staticProperty}")
+println("Used Groovy static property in ${GroovyClass.staticProperty}")
 GroovyClass.staticField = LANG
-println("Using Groovy static field in ${GroovyClass.staticField}")
+println("Used Groovy static field in ${GroovyClass.staticField}")
 GroovyClass.staticDynamicProperty = LANG
-println("Using Groovy static dynamic property in ${GroovyClass.staticDynamicProperty}")
+println("Used Groovy static dynamic property in ${GroovyClass.staticDynamicProperty}")
 GroovyClass.staticMethod(LANG)
 GroovyClass.staticExtensionMethod(LANG)
 GroovyClass.staticDynamicMethod(LANG)
 
 def instance = new GroovyClass()
 instance.instanceProperty = LANG
-println("Using Groovy instance property in ${instance.instanceProperty}")
+println("Used Groovy instance property in ${instance.instanceProperty}")
 instance.instanceField = LANG
-println("Using Groovy instance field in ${instance.instanceField}")
+println("Used Groovy instance field in ${instance.instanceField}")
 instance.instanceDynamicProperty = LANG
-println("Using Groovy instance dynamic property in ${instance.instanceDynamicProperty}")
+println("Used Groovy instance dynamic property in ${instance.instanceDynamicProperty}")
 instance.instanceMethod(LANG)
 instance.instanceExtensionMethod(LANG)
 instance.instanceDynamicMethod(LANG)

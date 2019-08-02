@@ -69,39 +69,39 @@ class UseKotlinAnnotations @KotlinConstructorAnnotation(LANG) constructor(
 
 fun main() {
     packageProperty = LANG
-    println("Using Kotlin package property in $packageProperty")
+    println("Used Kotlin package property in $packageProperty")
     packageFunction(LANG)
 
     KotlinClass.companionProperty = LANG
-    println("Using Kotlin companion property in ${KotlinClass.companionProperty}")
+    println("Used Kotlin companion property in ${KotlinClass.companionProperty}")
     KotlinClass.staticProperty = LANG
-    println("Using Kotlin @JvmStatic companion property in ${KotlinClass.staticProperty}")
+    println("Used Kotlin @JvmStatic companion property in ${KotlinClass.staticProperty}")
     KotlinClass.staticField = LANG
-    println("Using Kotlin companion field in ${KotlinClass.staticField}")
+    println("Used Kotlin companion field in ${KotlinClass.staticField}")
     KotlinClass.companionExtensionProperty = LANG
-    println("Using Kotlin instance extension property in ${KotlinClass.companionExtensionProperty}")
+    println("Used Kotlin instance extension property in ${KotlinClass.companionExtensionProperty}")
     KotlinClass.companionMethod(LANG)
     KotlinClass.staticMethod(LANG)
     KotlinClass.companionExtensionFunction(LANG)
 
     val instance = KotlinClass()
     instance.instanceProperty = LANG
-    println("Using Kotlin instance property in ${instance.instanceProperty}")
+    println("Used Kotlin instance property in ${instance.instanceProperty}")
     instance.instanceField = LANG
-    println("Using Kotlin instance field in ${instance.instanceField}")
+    println("Used Kotlin instance field in ${instance.instanceField}")
     instance.instanceExtensionProperty = LANG
-    println("Using Kotlin instance extension property in ${instance.instanceExtensionProperty}")
+    println("Used Kotlin instance extension property in ${instance.instanceExtensionProperty}")
     instance.instanceMethod(LANG)
     instance.instanceExtensionFunction(LANG)
 
     KotlinObject.objectProperty = LANG
-    println("Using Kotlin object property in ${KotlinObject.objectProperty}")
+    println("Used Kotlin object property in ${KotlinObject.objectProperty}")
     KotlinObject.staticProperty = LANG
-    println("Using Kotlin @JvmStatic object property in ${KotlinObject.staticProperty}")
+    println("Used Kotlin @JvmStatic object property in ${KotlinObject.staticProperty}")
     KotlinObject.staticField = LANG
-    println("Using Kotlin object field in ${KotlinObject.staticField}")
+    println("Used Kotlin object field in ${KotlinObject.staticField}")
     KotlinObject.objectExtensionProperty = LANG
-    println("Using Kotlin object extension property in ${KotlinObject.objectExtensionProperty}")
+    println("Used Kotlin object extension property in ${KotlinObject.objectExtensionProperty}")
     KotlinObject.objectMethod(LANG)
     KotlinObject.staticMethod(LANG)
     KotlinObject.objectExtensionFunction(LANG)
