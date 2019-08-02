@@ -32,6 +32,7 @@ Extensible API:
 * Interfaces
 * Traits
 * Traits with properties
+* Traits with methods
 * Base classes
 * Annotations
   * Types

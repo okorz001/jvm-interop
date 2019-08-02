@@ -13,6 +13,9 @@ import interop.groovy.lib.GroovyLibrary;
 import interop.groovy.lib.GroovyMethodAnnotation;
 import interop.groovy.lib.GroovyParameterAnnotation;
 import interop.groovy.lib.GroovyStaticExtensionMethods;
+import interop.groovy.lib.GroovyTraitWithMethod;
+// IntelliJ highlights this as missing, but still compiles and executes without error.
+import interop.groovy.lib.GroovyTraitWithMethod$Trait$Helper;
 import interop.groovy.lib.GroovyTraitWithProperty;
 import interop.groovy.lib.GroovyTypeAnnotation;
 import org.codehaus.groovy.runtime.DefaultGroovyMethods;
@@ -122,6 +125,20 @@ public class Main {
             @Override
             public void setLanguage(final String language) {
                 this.language = language;
+            }
+        });
+        GroovyLibrary.implementedTraitWithMethod(new GroovyTraitWithMethod() {
+            @Override
+            public String getLanguage() {
+                return LANG;
+            }
+
+            // Java classes must implement all trait methods
+            @Override
+            public void traitMethod() {
+                // Non-abstract trait methods are in a static $Trait$Helper class.
+                // The trait instance is passed as the first argument.
+                GroovyTraitWithMethod$Trait$Helper.traitMethod(this);
             }
         });
         GroovyLibrary.extendedBaseClass(new GroovyBaseClass() {

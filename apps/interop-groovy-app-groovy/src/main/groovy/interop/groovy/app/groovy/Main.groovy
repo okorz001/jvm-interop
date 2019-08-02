@@ -79,6 +79,7 @@ GroovyLibrary.implementedTrait { LANG }
 // Groovy automatically implements the property with default getters/setters
 class MyTraitWithProperty implements GroovyTraitWithProperty {}
 GroovyLibrary.implementedTraitWithProperty(LANG, new MyTraitWithProperty())
+GroovyLibrary.implementedTraitWithMethod { LANG }
 GroovyLibrary.extendedBaseClass { LANG }
 GroovyLibrary.usedTypeAnnotation(new UseGroovyAnnotations())
 GroovyLibrary.usedConstructorAnnotation(new UseGroovyAnnotations())
