@@ -25,6 +25,7 @@ Directly Callable API:
 * Default arguments
 * Named parameters
 * Varargs
+* _Generics_
 
 Extensible API:
 

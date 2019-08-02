@@ -14,6 +14,7 @@ Directly Callable API:
 * Instance fields
 * Instance methods
 * Varargs
+* _Generics_
 
 Extensible API:
 

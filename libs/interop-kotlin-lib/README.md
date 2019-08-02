@@ -33,6 +33,7 @@ Directly Callable API:
 * _Sealed classes_
 * Default arguments
 * Varargs
+* _Generics_
 
 Extensible API:
 

@@ -30,6 +30,8 @@ Directly Callable API:
 * Default arguments
 * Varargs
 * `@varargs` varargs
+* _Generics_
+* _Implicits_
 
 Extensible API:
 
@@ -38,3 +40,4 @@ Extensible API:
 * Traits
 * Traits with properties
 * Base classes
+* _Annotations_
