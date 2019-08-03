@@ -57,8 +57,11 @@ public class Main {
         System.out.printf("Used Kotlin companion extension property in %s\n",
                           KotlinLibraryKt.getCompanionExtensionProperty(KotlinClass.Companion));
         KotlinClass.Companion.companionMethod(LANG);
+        KotlinClass.Companion.companionInfixMethod(LANG);
         KotlinClass.staticMethod(LANG);
+        KotlinClass.staticInfixMethod(LANG);
         KotlinLibraryKt.companionExtensionFunction(KotlinClass.Companion, LANG);
+        KotlinLibraryKt.companionExtensionInfixFunction(KotlinClass.Companion, LANG);
 
         KotlinClass instance = new KotlinClass();
         instance.setInstanceProperty(LANG);
@@ -69,7 +72,9 @@ public class Main {
         System.out.printf("Used Kotlin instance extension property in %s\n",
                           KotlinLibraryKt.getInstanceExtensionProperty(instance));
         instance.instanceMethod(LANG);
+        instance.instanceInfixMethod(LANG);
         KotlinLibraryKt.instanceExtensionFunction(instance, LANG);
+        KotlinLibraryKt.instanceExtensionInfixFunction(instance, LANG);
 
         KotlinObject.INSTANCE.setObjectProperty(LANG);
         System.out.printf("Used Kotlin object property in %s\n", KotlinObject.INSTANCE.getObjectProperty());
@@ -81,8 +86,11 @@ public class Main {
         System.out.printf("Used Kotlin object extension property in %s\n",
                           KotlinLibraryKt.getObjectExtensionProperty(KotlinObject.INSTANCE));
         KotlinObject.INSTANCE.objectMethod(LANG);
+        KotlinObject.INSTANCE.objectInfixMethod(LANG);
         KotlinObject.staticMethod(LANG);
+        KotlinObject.staticInfixMethod(LANG);
         KotlinLibraryKt.objectExtensionFunction(KotlinObject.INSTANCE, LANG);
+        KotlinLibraryKt.objectExtensionInfixFunction(KotlinObject.INSTANCE, LANG);
 
         // By default, Kotlin does not generate overloads for default arguments.
         // Java callers must know the default values. Adding new default arguments is a breaking change for Java.

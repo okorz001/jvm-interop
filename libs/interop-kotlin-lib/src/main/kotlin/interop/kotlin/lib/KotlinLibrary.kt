@@ -23,6 +23,9 @@ var KotlinClass.Companion.companionExtensionProperty: String
 fun KotlinClass.Companion.companionExtensionFunction(from: String) =
     println("Called Kotlin companion extension function from $from")
 
+infix fun KotlinClass.Companion.companionExtensionInfixFunction(from: String) =
+    println("Called Kotlin companion extension infix function from $from")
+
 // extension properties do not have their own backing fields
 // note: assigning an instance property to a global property is unexpected behavior, just for demonstration purposes
 private var instanceExtensionData: String = ""
@@ -33,6 +36,9 @@ var KotlinClass.instanceExtensionProperty: String
 fun KotlinClass.instanceExtensionFunction(from: String) =
     println("Called Kotlin instance extension function from $from")
 
+infix fun KotlinClass.instanceExtensionInfixFunction(from: String) =
+    println("Called Kotlin instance extension infix function from $from")
+
 // extension properties do not have their own backing fields
 private var objectExtensionData: String = ""
 var KotlinObject.objectExtensionProperty: String
@@ -40,6 +46,9 @@ var KotlinObject.objectExtensionProperty: String
     set(value) { objectExtensionData = value }
 
 fun KotlinObject.objectExtensionFunction(from: String) = println("Called Kotlin object extension function from $from")
+
+infix fun KotlinObject.objectExtensionInfixFunction(from: String) =
+    println("Called Kotlin object extension infix function from $from")
 
 fun defaultArguments(from: String, a: Any = "default", b: Any = "default") =
     println("Called Kotlin function with default arguments from $from with a=$a and b=$b")

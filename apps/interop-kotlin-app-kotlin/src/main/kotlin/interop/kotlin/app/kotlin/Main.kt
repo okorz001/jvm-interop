@@ -16,6 +16,7 @@ import interop.kotlin.lib.KotlinPropertySetterAnnotation
 import interop.kotlin.lib.KotlinValueParameterAnnotation
 // Cannot import package directly, so this gets pretty ugly without *.
 import interop.kotlin.lib.companionExtensionFunction
+import interop.kotlin.lib.companionExtensionInfixFunction
 import interop.kotlin.lib.companionExtensionProperty
 import interop.kotlin.lib.defaultArguments
 import interop.kotlin.lib.defaultArgumentsOverloads
@@ -27,8 +28,10 @@ import interop.kotlin.lib.implementedInterface
 import interop.kotlin.lib.implementedInterfaceWithMethod
 import interop.kotlin.lib.implementedInterfaceWithProperty
 import interop.kotlin.lib.instanceExtensionFunction
+import interop.kotlin.lib.instanceExtensionInfixFunction
 import interop.kotlin.lib.instanceExtensionProperty
 import interop.kotlin.lib.objectExtensionFunction
+import interop.kotlin.lib.objectExtensionInfixFunction
 import interop.kotlin.lib.objectExtensionProperty
 import interop.kotlin.lib.packageFunction
 import interop.kotlin.lib.packageProperty
@@ -81,8 +84,17 @@ fun main() {
     KotlinClass.companionExtensionProperty = LANG
     println("Used Kotlin instance extension property in ${KotlinClass.companionExtensionProperty}")
     KotlinClass.companionMethod(LANG)
+    KotlinClass companionInfixMethod LANG
+    // infix function can still be called in normal manner
+    KotlinClass.companionInfixMethod(LANG)
     KotlinClass.staticMethod(LANG)
+    KotlinClass staticInfixMethod LANG
+    // infix function can still be called in normal manner
+    KotlinClass.staticInfixMethod(LANG)
     KotlinClass.companionExtensionFunction(LANG)
+    KotlinClass companionExtensionInfixFunction  LANG
+    // infix function can still be called in normal manner
+    KotlinClass.companionExtensionInfixFunction(LANG)
 
     val instance = KotlinClass()
     instance.instanceProperty = LANG
@@ -92,7 +104,13 @@ fun main() {
     instance.instanceExtensionProperty = LANG
     println("Used Kotlin instance extension property in ${instance.instanceExtensionProperty}")
     instance.instanceMethod(LANG)
+    instance instanceInfixMethod LANG
+    // infix function can still be called in normal manner
+    instance.instanceInfixMethod(LANG)
     instance.instanceExtensionFunction(LANG)
+    instance instanceExtensionInfixFunction LANG
+    // infix function can still be called in normal manner
+    instance.instanceExtensionInfixFunction(LANG)
 
     KotlinObject.objectProperty = LANG
     println("Used Kotlin object property in ${KotlinObject.objectProperty}")
@@ -103,8 +121,17 @@ fun main() {
     KotlinObject.objectExtensionProperty = LANG
     println("Used Kotlin object extension property in ${KotlinObject.objectExtensionProperty}")
     KotlinObject.objectMethod(LANG)
+    KotlinObject objectInfixMethod LANG
+    // infix function can still be called in normal manner
+    KotlinObject.objectInfixMethod(LANG)
     KotlinObject.staticMethod(LANG)
+    KotlinObject staticInfixMethod LANG
+    // infix function can still be called in normal manner
+    KotlinObject.staticInfixMethod(LANG)
     KotlinObject.objectExtensionFunction(LANG)
+    KotlinObject objectExtensionInfixFunction LANG
+    // infix function can still be called in normal manner
+    KotlinObject.objectExtensionInfixFunction(LANG)
 
     defaultArguments(LANG, 1, 2)
     defaultArguments(LANG, 1)
