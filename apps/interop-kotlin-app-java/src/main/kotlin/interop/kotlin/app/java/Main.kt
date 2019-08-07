@@ -1,6 +1,7 @@
 package interop.kotlin.app.java
 
 import interop.java.lib.JavaBaseClass
+import interop.java.lib.JavaCheckedException
 import interop.java.lib.JavaClass
 import interop.java.lib.JavaConstructorAnnotation
 import interop.java.lib.JavaFieldAnnotation
@@ -8,6 +9,7 @@ import interop.java.lib.JavaLibrary
 import interop.java.lib.JavaMethodAnnotation
 import interop.java.lib.JavaParameterAnnotation
 import interop.java.lib.JavaTypeAnnotation
+import interop.java.lib.JavaUncheckedException
 
 private const val LANG = "Kotlin"
 
@@ -43,6 +45,20 @@ fun main() {
     // Kotlin Array cannot be directly passed as varargs.
     // The spread operator can be used to unwrap the Array into arguments.
     JavaLibrary.varargs(LANG, *arrayOf(1, 2))
+
+    try {
+        JavaLibrary.throwsUnchecked()
+    }
+    catch (e: JavaUncheckedException) {
+        println("Caught Java checked exception in Kotlin")
+    }
+
+    try {
+        JavaLibrary.throwsChecked()
+    }
+    catch (e: JavaCheckedException) {
+        println("Caught Java checked exception in Kotlin")
+    }
 
     JavaLibrary.implementedInterface { LANG }
     JavaLibrary.implementedInterfaceWithMethod { LANG }

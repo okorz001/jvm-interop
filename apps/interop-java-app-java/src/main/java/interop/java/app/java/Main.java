@@ -1,6 +1,7 @@
 package interop.java.app.java;
 
 import interop.java.lib.JavaBaseClass;
+import interop.java.lib.JavaCheckedException;
 import interop.java.lib.JavaClass;
 import interop.java.lib.JavaConstructorAnnotation;
 import interop.java.lib.JavaFieldAnnotation;
@@ -8,6 +9,7 @@ import interop.java.lib.JavaLibrary;
 import interop.java.lib.JavaMethodAnnotation;
 import interop.java.lib.JavaParameterAnnotation;
 import interop.java.lib.JavaTypeAnnotation;
+import interop.java.lib.JavaUncheckedException;
 
 public class Main {
     private static final String LANG = "Java";
@@ -41,6 +43,20 @@ public class Main {
         JavaLibrary.varargs(LANG, 1, 2);
         // Varargs can also be called with an array
         JavaLibrary.varargs(LANG, new Object[]{1, 2});
+
+        try {
+            JavaLibrary.throwsUnchecked();
+        }
+        catch (JavaUncheckedException e) {
+            System.out.println("Caught Java unchecked exception in Java");
+        }
+
+        try {
+            JavaLibrary.throwsChecked();
+        }
+        catch (JavaCheckedException e) {
+            System.out.println("Caught Java checked exception in Java");
+        }
 
         JavaLibrary.implementedInterface(() -> LANG);
         JavaLibrary.implementedInterfaceWithMethod(() -> LANG);

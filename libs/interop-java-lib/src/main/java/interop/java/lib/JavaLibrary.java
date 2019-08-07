@@ -10,6 +10,14 @@ public class JavaLibrary {
         System.out.printf("Called Java method with varargs from %s with %s\n", from, Arrays.asList(args));
     }
 
+    public static void throwsUnchecked() {
+        throw new JavaUncheckedException();
+    }
+
+    public static void throwsChecked() throws JavaCheckedException {
+        throw new JavaCheckedException();
+    }
+
     public static void implementedInterface(JavaInterface it) {
         System.out.println("Implemented Java interface in " + it.getLanguage());
     }

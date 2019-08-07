@@ -1,6 +1,7 @@
 package interop.groovy.app.groovy
 
 import interop.groovy.lib.GroovyCategory
+import interop.groovy.lib.GroovyCheckedException
 import interop.groovy.lib.GroovyClass
 import interop.groovy.lib.GroovyConstructorAnnotation
 import interop.groovy.lib.GroovyFieldAnnotation
@@ -9,6 +10,7 @@ import interop.groovy.lib.GroovyMethodAnnotation
 import interop.groovy.lib.GroovyParameterAnnotation
 import interop.groovy.lib.GroovyTraitWithProperty
 import interop.groovy.lib.GroovyTypeAnnotation
+import interop.groovy.lib.GroovyUncheckedException
 
 final String LANG = "Groovy"
 
@@ -72,6 +74,27 @@ GroovyLibrary.varargs(LANG, 1)
 GroovyLibrary.varargs(LANG, 1, 2)
 // Varargs can also be called with an array
 GroovyLibrary.varargs(LANG, [1, 2] as Object[])
+
+try {
+    GroovyLibrary.throwsUnchecked()
+}
+catch (GroovyUncheckedException e) {
+    println("Caught Groovy unchecked exception in Groovy");
+}
+
+try {
+    GroovyLibrary.throwsChecked()
+}
+catch (GroovyCheckedException e) {
+    println("Caught Groovy checked exception in Groovy");
+}
+
+try {
+    GroovyLibrary.throwsCheckedDeclared()
+}
+catch (GroovyCheckedException e) {
+    println("Caught Groovy declared checked exception in Groovy");
+}
 
 GroovyLibrary.implementedClosure { LANG }
 GroovyLibrary.implementedClosureWithDelegate { message.call(LANG) }

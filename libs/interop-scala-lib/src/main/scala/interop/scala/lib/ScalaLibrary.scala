@@ -22,6 +22,14 @@ object ScalaLibrary {
     println(s"Called Scala @varargs method with varargs from $from with $argsStr")
   }
 
+  def throwsUnchecked(): Nothing = throw new ScalaUncheckedException()
+
+  def throwsChecked(): Nothing = throw new ScalaCheckedException()
+
+  // @throws[ScalaCheckedException] will compile but is not equivalent
+  @throws(classOf[ScalaCheckedException])
+  def throwsCheckedWithAnnotation(): Nothing = throw new ScalaCheckedException()
+
   def implementedFunction(it: () => String): Unit = println(s"Implemented Scala function in ${it()}")
 
   def implementedCurriedFunction(it: () => () => String): Unit =

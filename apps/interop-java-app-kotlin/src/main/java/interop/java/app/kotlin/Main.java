@@ -1,6 +1,7 @@
 package interop.java.app.kotlin;
 
 import interop.kotlin.lib.KotlinBaseClass;
+import interop.kotlin.lib.KotlinCheckedException;
 import interop.kotlin.lib.KotlinClass;
 import interop.kotlin.lib.KotlinClassAnnotation;
 import interop.kotlin.lib.KotlinConstructorAnnotation;
@@ -12,6 +13,7 @@ import interop.kotlin.lib.KotlinLibraryKt;
 import interop.kotlin.lib.KotlinObject;
 import interop.kotlin.lib.KotlinPropertyGetterAnnotation;
 import interop.kotlin.lib.KotlinPropertySetterAnnotation;
+import interop.kotlin.lib.KotlinUncheckedException;
 import interop.kotlin.lib.KotlinValueParameterAnnotation;
 import org.jetbrains.annotations.NotNull;
 
@@ -107,6 +109,33 @@ public class Main {
         KotlinLibraryKt.varargs(LANG, 1, 2);
         // Varargs can also be called with an array
         KotlinLibraryKt.varargs(LANG, new Object[]{1, 2});
+
+        try {
+            KotlinLibraryKt.throwsUnchecked();
+        }
+        catch (KotlinUncheckedException e) {
+            System.out.println("Caught Kotlin unchecked exception in Java");
+        }
+
+        try {
+            KotlinLibraryKt.throwsChecked();
+        }
+        // Java won't allow catching a checked exception that was not declared as thrown.
+        // As a workaround you can always catch Exception (which includes RuntimeException)
+        catch (Exception e) {
+            // We need to verify if this was the expected Exception. Code analyzers may complain about this.
+            if (!(e instanceof KotlinCheckedException)) {
+                throw e;
+            }
+            System.out.println("Caught Kotlin checked exception in Java");
+        }
+
+        try {
+            KotlinLibraryKt.throwsCheckedWithAnnotation();
+        }
+        catch (KotlinCheckedException e) {
+            System.out.println("Caught Kotlin @Throws checked exception in Java");
+        }
 
         KotlinLibraryKt.implementedFunction(() -> LANG);
         KotlinLibraryKt.implementedFunctionWithReceiver(it -> LANG);

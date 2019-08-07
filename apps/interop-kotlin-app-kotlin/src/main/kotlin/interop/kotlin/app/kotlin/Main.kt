@@ -1,6 +1,7 @@
 package interop.kotlin.app.kotlin
 
 import interop.kotlin.lib.KotlinBaseClass
+import interop.kotlin.lib.KotlinCheckedException
 import interop.kotlin.lib.KotlinClass
 import interop.kotlin.lib.KotlinClassAnnotation
 import interop.kotlin.lib.KotlinConstructorAnnotation
@@ -13,6 +14,7 @@ import interop.kotlin.lib.KotlinObject
 import interop.kotlin.lib.KotlinPropertyAnnotation
 import interop.kotlin.lib.KotlinPropertyGetterAnnotation
 import interop.kotlin.lib.KotlinPropertySetterAnnotation
+import interop.kotlin.lib.KotlinUncheckedException
 import interop.kotlin.lib.KotlinValueParameterAnnotation
 // Cannot import package directly, so this gets pretty ugly without *.
 import interop.kotlin.lib.companionExtensionFunction
@@ -35,6 +37,9 @@ import interop.kotlin.lib.objectExtensionInfixFunction
 import interop.kotlin.lib.objectExtensionProperty
 import interop.kotlin.lib.packageFunction
 import interop.kotlin.lib.packageProperty
+import interop.kotlin.lib.throwsChecked
+import interop.kotlin.lib.throwsCheckedWithAnnotation
+import interop.kotlin.lib.throwsUnchecked
 import interop.kotlin.lib.usedClassAnnotation
 import interop.kotlin.lib.usedConstructorAnnotation
 import interop.kotlin.lib.usedFieldAnnotation
@@ -154,6 +159,27 @@ fun main() {
     varargs(LANG, 1, 2)
     // An array cannot be passed directly, but you can use the spread operator.
     varargs(LANG, *arrayOf(1, 2))
+
+    try {
+        throwsUnchecked()
+    }
+    catch (e: KotlinUncheckedException) {
+        println("Caught Kotlin unchecked exception in Kotlin")
+    }
+
+    try {
+        throwsChecked()
+    }
+    catch (e: KotlinCheckedException) {
+        println("Caught Kotlin checked exception in Kotlin")
+    }
+
+    try {
+        throwsCheckedWithAnnotation()
+    }
+    catch (e: KotlinCheckedException) {
+        println("Caught Kotlin @Throws checked exception in Kotlin")
+    }
 
     implementedFunction { LANG }
     implementedFunctionWithReceiver { LANG }

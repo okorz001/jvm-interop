@@ -4,8 +4,10 @@ import java.util.Arrays;
 import java.util.Collections;
 
 import interop.scala.lib.ScalaBaseClass;
+import interop.scala.lib.ScalaCheckedException;
 import interop.scala.lib.ScalaLibrary;
 import interop.scala.lib.ScalaTraitWithProperty;
+import interop.scala.lib.ScalaUncheckedException;
 import interop.scala.lib.package$;
 import interop.scala.lib.ScalaClass;
 import interop.scala.lib.ScalaObject;
@@ -124,6 +126,33 @@ public class Main {
         ScalaLibrary.varargsWithAnnotation(LANG, 1, 2);
         // @varargs can also be called with an array
         ScalaLibrary.varargsWithAnnotation(LANG, new Object[]{1, 2});
+
+        try {
+            ScalaLibrary.throwsUnchecked();
+        }
+        catch (ScalaUncheckedException e) {
+            System.out.println("Caught Scala unchecked exception in Java");
+        }
+
+        try {
+            ScalaLibrary.throwsChecked();
+        }
+        // Java won't allow catching a checked exception that was not declared as thrown.
+        // As a workaround you can always catch Exception (which includes RuntimeException)
+        catch (Exception e) {
+            // We need to verify if this was the expected Exception. Code analyzers may complain about this.
+            if (!(e instanceof ScalaCheckedException)) {
+                throw e;
+            }
+            System.out.println("Caught Scala checked exception in Java");
+        }
+
+        try {
+            ScalaLibrary.throwsCheckedWithAnnotation();
+        }
+        catch (ScalaCheckedException e) {
+            System.out.println("Caught Scala @throws checked exception in Java");
+        }
 
         ScalaLibrary.implementedFunction(() -> LANG);
         ScalaLibrary.implementedCurriedFunction(() -> () -> LANG);

@@ -60,6 +60,13 @@ fun defaultArgumentsOverloads(from: String, a: Any = "default", b: Any = "defaul
 fun varargs(from: String, vararg args: Any) =
     println("Called Kotlin function with varargs from $from with ${listOf(*args)}")
 
+fun throwsUnchecked(): Nothing = throw KotlinUncheckedException()
+
+fun throwsChecked(): Nothing = throw KotlinCheckedException()
+
+@Throws(KotlinCheckedException::class)
+fun throwsCheckedWithAnnotation(): Nothing = throw KotlinCheckedException()
+
 fun implementedFunction(it: () -> String) = println("Implemented Kotlin function in ${it()}")
 
 fun implementedFunctionWithReceiver(it: KotlinClass.() -> String) =

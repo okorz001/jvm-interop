@@ -42,6 +42,9 @@ Directly Callable API:
 * Default arguments
 * Varargs
 * _Generics_
+* Unchecked exceptions
+* Checked exceptions
+* `@Throws` checked exceptions
 
 Extensible API:
 

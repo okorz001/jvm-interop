@@ -15,6 +15,8 @@ Directly Callable API:
 * Instance methods
 * Varargs
 * _Generics_
+* Unchecked exceptions
+* Checked exceptions
 
 Extensible API:
 

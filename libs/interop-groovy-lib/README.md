@@ -26,6 +26,9 @@ Directly Callable API:
 * Named parameters
 * Varargs
 * _Generics_
+* Unchecked exceptions
+* Checked exceptions
+* Declared checked exceptions
 
 Extensible API:
 

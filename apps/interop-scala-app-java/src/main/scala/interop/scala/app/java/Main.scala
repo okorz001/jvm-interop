@@ -1,6 +1,6 @@
 package interop.scala.app.java
 
-import interop.java.lib.{JavaClass, JavaConstructorAnnotation, JavaFieldAnnotation, JavaLibrary, JavaMethodAnnotation, JavaParameterAnnotation, JavaTypeAnnotation}
+import interop.java.lib.{JavaCheckedException, JavaClass, JavaConstructorAnnotation, JavaFieldAnnotation, JavaLibrary, JavaMethodAnnotation, JavaParameterAnnotation, JavaTypeAnnotation, JavaUncheckedException}
 
 object Main extends App {
   // The final is required here to make a constant expression. (???)
@@ -36,6 +36,20 @@ object Main extends App {
   // The vararg type ascription can be used to unwrap the Array (or Seq or other collections) into arguments.
   JavaLibrary.varargs(LANG, Array(1, 2) : _*)
   JavaLibrary.varargs(LANG, Seq(1, 2) : _*)
+
+  try {
+    JavaLibrary.throwsUnchecked()
+  }
+  catch {
+    case _: JavaUncheckedException => println("Caught Java unchecked exception in Scala")
+  }
+
+  try {
+    JavaLibrary.throwsChecked()
+  }
+  catch {
+    case _: JavaCheckedException => println("Caught Java checked exception in Scala")
+  }
 
   JavaLibrary.implementedInterface(() => LANG)
   JavaLibrary.implementedInterfaceWithMethod(() => LANG)

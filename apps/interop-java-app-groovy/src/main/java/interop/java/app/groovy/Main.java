@@ -8,6 +8,7 @@ import interop.groovy.lib.GroovyBaseClass;
 import interop.groovy.lib.GroovyCategory;
 import interop.groovy.lib.GroovyClass;
 import interop.groovy.lib.GroovyConstructorAnnotation;
+import interop.groovy.lib.GroovyCheckedException;
 import interop.groovy.lib.GroovyExtensionMethods;
 import interop.groovy.lib.GroovyFieldAnnotation;
 import interop.groovy.lib.GroovyLibrary;
@@ -19,6 +20,7 @@ import interop.groovy.lib.GroovyTraitWithMethod;
 import interop.groovy.lib.GroovyTraitWithMethod$Trait$Helper;
 import interop.groovy.lib.GroovyTraitWithProperty;
 import interop.groovy.lib.GroovyTypeAnnotation;
+import interop.groovy.lib.GroovyUncheckedException;
 import org.codehaus.groovy.runtime.DefaultGroovyMethods;
 
 public class Main {
@@ -98,6 +100,33 @@ public class Main {
         GroovyLibrary.varargs(LANG, 1, 2);
         // Varargs can also be called with an array
         GroovyLibrary.varargs(LANG, new Object[]{1, 2});
+
+        try {
+            GroovyLibrary.throwsUnchecked();
+        }
+        catch (GroovyUncheckedException e) {
+            System.out.println("Caught Groovy unchecked exception in Java");
+        }
+
+        try {
+            GroovyLibrary.throwsChecked();
+        }
+        // Java won't allow catching a checked exception that was not declared as thrown.
+        // As a workaround you can always catch Exception (which includes RuntimeException)
+        catch (Exception e) {
+            // We need to verify if this was the expected Exception. Code analyzers may complain about this.
+            if (!(e instanceof GroovyCheckedException)) {
+                throw e;
+            }
+            System.out.println("Caught Groovy checked exception in Java");
+        }
+
+        try {
+            GroovyLibrary.throwsCheckedDeclared();
+        }
+        catch (GroovyCheckedException e) {
+            System.out.println("Caught Groovy declared checked exception in Java");
+        }
 
         // Use null for owner since we have no instance in a static method.
         GroovyLibrary.implementedClosure(new Closure<String>(null){

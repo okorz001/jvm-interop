@@ -28,6 +28,19 @@ class GroovyLibrary {
         println("Called Groovy method with varargs from ${from} with ${args}")
     }
 
+    static throwsUnchecked() {
+        throw new GroovyUncheckedException()
+    }
+
+    // Groovy doesn't require checked exceptions to be declared
+    static throwsChecked() {
+        throw new GroovyCheckedException()
+    }
+
+    static throwsCheckedDeclared() throws GroovyCheckedException {
+        throw new GroovyCheckedException()
+    }
+
     static implementedClosure(Closure<String> c) {
         println "Implemented Groovy closure in ${c()}"
     }

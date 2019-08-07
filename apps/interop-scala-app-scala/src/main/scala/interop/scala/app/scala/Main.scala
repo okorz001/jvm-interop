@@ -1,7 +1,6 @@
 package interop.scala.app.scala
 
-import interop.scala.lib.{ScalaBaseClass, ScalaClass, ScalaLibrary, ScalaObject, ScalaTrait, ScalaTraitWithProperty,
-  packageBeanProperty, packageBooleanBeanProperty, packageMethod, packageProperty}
+import interop.scala.lib.{ScalaBaseClass, ScalaCheckedException, ScalaClass, ScalaLibrary, ScalaObject, ScalaTrait, ScalaTraitWithProperty, ScalaUncheckedException, packageBeanProperty, packageBooleanBeanProperty, packageMethod, packageProperty}
 
 object Main extends App {
   // The final is required here to make a constant expression. (???)
@@ -63,6 +62,27 @@ object Main extends App {
   ScalaLibrary.varargsWithAnnotation(LANG, 1, 2)
   ScalaLibrary.varargsWithAnnotation(LANG, Array(1, 2) : _*)
   ScalaLibrary.varargsWithAnnotation(LANG, Seq(1, 2) : _*)
+
+  try {
+    ScalaLibrary.throwsUnchecked()
+  }
+  catch {
+    case _: ScalaUncheckedException => println("Caught Scala unchecked exception in Scala")
+  }
+
+  try {
+    ScalaLibrary.throwsChecked()
+  }
+  catch {
+    case _: ScalaCheckedException => println("Caught Scala checked exception in Scala")
+  }
+
+  try {
+    ScalaLibrary.throwsCheckedWithAnnotation()
+  }
+  catch {
+    case _: ScalaCheckedException => println("Caught Scala @throws checked exception in Scala")
+  }
 
   ScalaLibrary.implementedFunction(() => LANG)
   ScalaLibrary.implementedCurriedFunction(() => () => LANG)
