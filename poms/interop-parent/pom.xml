@@ -55,6 +55,39 @@
 
   <profiles>
     <profile>
+      <id>clojure</id>
+      <activation>
+        <file>
+          <exists>src/main/clojure</exists>
+        </file>
+      </activation>
+      <dependencies>
+        <dependency>
+          <groupId>org.clojure</groupId>
+          <artifactId>clojure</artifactId>
+          <version>1.10.0</version>
+        </dependency>
+      </dependencies>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>com.theoryinpractise</groupId>
+            <artifactId>clojure-maven-plugin</artifactId>
+            <version>1.8.3</version>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>add-source</goal>
+                  <goal>compile</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <profile>
       <id>groovy</id>
       <activation>
         <file>

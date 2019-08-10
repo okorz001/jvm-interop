@@ -42,6 +42,8 @@ This repository currently covers:
   * calling [Groovy](apps/interop-java-app-groovy)
   * calling [Kotlin](apps/interop-java-app-kotlin)
   * calling [Scala](apps/interop-java-app-scala)
+* Clojure
+  * calling [Java](apps/interop-clojure-app-java)
 * [Groovy](libs/interop-groovy-lib)
   * calling [Groovy](apps/interop-groovy-app-groovy)
   * calling [Java](apps/interop-groovy-app-java)

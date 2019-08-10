@@ -29,6 +29,8 @@
     <module>apps/interop-java-app-kotlin</module>
     <module>apps/interop-java-app-scala</module>
 
+    <module>apps/interop-clojure-app-java</module>
+
     <module>apps/interop-groovy-app-groovy</module>
     <module>apps/interop-groovy-app-java</module>
 
