@@ -172,7 +172,11 @@
         <dependency>
           <groupId>org.jruby</groupId>
           <artifactId>jruby-complete</artifactId>
-          <version>9.2.7.0</version>
+          <!--
+          string interpolation is broken in jruby 9.2.7.0
+          https://github.com/jruby/jruby/issues/5740
+          -->
+          <version>9.2.6.0</version>
         </dependency>
       </dependencies>
       <build>
