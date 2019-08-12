@@ -162,6 +162,38 @@
     </profile>
 
     <profile>
+      <id>ruby</id>
+      <activation>
+        <file>
+          <exists>src/main/ruby</exists>
+        </file>
+      </activation>
+      <dependencies>
+        <dependency>
+          <groupId>org.jruby</groupId>
+          <artifactId>jruby-complete</artifactId>
+          <version>9.2.7.0</version>
+        </dependency>
+      </dependencies>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>de.saumya.mojo</groupId>
+            <artifactId>jruby-maven-plugin</artifactId>
+            <version>1.1.8</version>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>compile</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <profile>
       <id>scala</id>
       <activation>
         <file>

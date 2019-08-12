@@ -50,6 +50,8 @@ This repository currently covers:
 * [Kotlin](libs/interop-kotlin-lib)
   * calling [Kotlin](apps/interop-kotlin-app-kotlin)
   * calling [Java](apps/interop-kotlin-app-java)
+* Ruby
+  * calling [Java](apps/interop-ruby-app-java)
 * [Scala](libs/interop-scala-lib)
   * calling [Scala](apps/interop-scala-app-scala)
   * calling [Java](apps/interop-scala-app-java)
